@@ -1,0 +1,26 @@
+22121switch
+
+L'instruction `switch` est une structure de contrôle en langage C qui permet d'évaluer une expression et d'exécuter différents blocs de code en fonction de la valeur de cette expression. Elle est souvent utilisée lorsque vous avez plusieurs cas à gérer et peut rendre le code plus clair et plus efficace que l'utilisation de multiples instructions `if` imbriquées.
+
+La syntaxe générale de l'instruction `switch` est la suivante :
+
+```c
+switch (expression) {
+    case valeur1:
+        // Bloc de code à exécuter si l'expression est égale à valeur1
+        break;
+    case valeur2:
+        // Bloc de code à exécuter si l'expression est égale à valeur2
+        break;
+    // Autres cas possibles
+    default:
+        // Bloc de code à exécuter si aucun des cas précédents n'est satisfait
+        break;
+}
+```
+
+Dans cet exemple, `expression` est évaluée et le flux d'exécution est dirigé vers le cas correspondant à la valeur de cette expression. Si aucun des cas ne correspond à la valeur de l'expression, le bloc de code associé à `default` est exécuté.
+
+L'utilisation de l'instruction `switch` est particulièrement appropriée lorsque vous avez une expression qui peut prendre plusieurs valeurs distinctes et que vous devez exécuter des actions différentes en fonction de ces valeurs. Par exemple, elle est souvent utilisée pour traiter des choix d'utilisateur, comme dans les menus de sélection.
+
+Il est important de noter que chaque cas dans une instruction `switch` doit être terminé par une instruction `break` pour éviter que l'exécution ne continue dans les cas suivants. Sinon, si aucun `break` n'est rencontré, l'exécution continuera dans les cas suivants jusqu'à ce qu'un `break` soit rencontré ou que la fin du bloc `switch` soit atteinte.

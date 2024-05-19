@@ -1,0 +1,23 @@
+22122CaseDefault
+
+Les instructions `case` et `default` sont utilisées dans une structure `switch` en langage C pour définir les différents cas à évaluer en fonction de la valeur d'une expression. La syntaxe des instructions `case` et `default` est la suivante :
+
+- L'instruction `case` est utilisée pour définir un cas spécifique à évaluer. Elle est suivie de la valeur attendue pour l'expression à évaluer, suivie par deux points (`:`) et le bloc de code correspondant à exécuter si l'expression équivaut à cette valeur. La syntaxe est la suivante :
+
+```c
+case valeur:
+    // Bloc de code à exécuter si l'expression est égale à la valeur
+    break;
+```
+
+- L'instruction `default` est utilisée pour définir un cas par défaut à exécuter si aucun des cas précédents dans la structure `switch` n'est satisfait. Elle est suivie de deux points (`:`) et du bloc de code correspondant à exécuter. La syntaxe est la suivante :
+
+```c
+default:
+    // Bloc de code à exécuter si aucun des cas précédents n'est satisfait
+    break;
+```
+
+Il est important de noter que chaque bloc de code associé à un `case` doit être terminé par une instruction `break`. Cela garantit que l'exécution de la structure `switch` se termine une fois qu'un cas est satisfait, évitant ainsi une exécution continue dans les cas suivants.
+
+En utilisant les instructions `case` et `default`, les programmeurs peuvent définir de manière claire et précise les actions à exécuter en fonction des différentes valeurs de l'expression évaluée dans une structure `switch`. Cela permet de créer des structures de contrôle conditionnelles efficaces et faciles à lire dans les programmes en langage C.

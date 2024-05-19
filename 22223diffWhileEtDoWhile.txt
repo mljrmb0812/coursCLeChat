@@ -1,0 +1,97 @@
+22223diffWhileEtDoWhile
+
+La boucle `while` et la boucle `do-while` en C sont deux structures de contrôle itératives qui permettent d'exécuter un bloc de code de manière répétitive, mais elles diffèrent par le moment où la condition de continuation est évaluée et par certaines de leurs applications. Voici une comparaison détaillée entre ces deux types de boucles :
+
+### Évaluation de la condition
+
+**Boucle `while`** :
+- La condition est évaluée avant chaque itération.
+- Si la condition est fausse dès le départ, le bloc de code ne s'exécute jamais.
+
+```c
+#include <stdio.h>
+
+int main() {
+    int i = 0;
+    while (i < 10) {
+        printf("%d\n", i);
+        i++;
+    }
+    return 0;
+}
+```
+
+Dans cet exemple, la boucle `while` vérifie la condition `i < 10` avant chaque exécution du bloc de code. Si `i` est initialement 10 ou plus, le bloc de code ne s'exécute pas du tout.
+
+**Boucle `do-while`** :
+- La condition est évaluée après chaque itération.
+- Le bloc de code s'exécute toujours au moins une fois, même si la condition est fausse dès le départ.
+
+```c
+#include <stdio.h>
+
+int main() {
+    int i = 0;
+    do {
+        printf("%d\n", i);
+        i++;
+    } while (i < 10);
+    return 0;
+}
+```
+
+Dans cet exemple, la boucle `do-while` exécute le bloc de code une première fois, puis vérifie la condition `i < 10`. Même si `i` était initialement 10, le bloc de code s'exécuterait au moins une fois.
+
+### Applications typiques
+
+**Boucle `while`** :
+- Utilisée lorsque le nombre d'itérations n'est pas connu à l'avance et peut être zéro.
+- Appropriée pour les situations où il est possible que le bloc de code ne doive pas s'exécuter du tout, selon la condition initiale.
+
+Exemple de lecture de fichier jusqu'à la fin :
+
+```c
+#include <stdio.h>
+
+int main() {
+    FILE *file = fopen("data.txt", "r");
+    char line[100];
+    while (fgets(line, sizeof(line), file)) {
+        printf("%s", line);
+    }
+    fclose(file);
+    return 0;
+}
+```
+
+Dans cet exemple, la boucle `while` lit les lignes du fichier tant qu'il y a des lignes à lire. Si le fichier est vide, la boucle ne s'exécute pas.
+
+**Boucle `do-while`** :
+- Utilisée lorsque le bloc de code doit s'exécuter au moins une fois.
+- Idéale pour les opérations de saisie utilisateur ou d'initialisation qui doivent se produire au moins une fois avant de vérifier une condition.
+
+Exemple de saisie utilisateur jusqu'à ce qu'une condition soit remplie :
+
+```c
+#include <stdio.h>
+
+int main() {
+    int number;
+    do {
+        printf("Enter a positive number: ");
+        scanf("%d", &number);
+    } while (number <= 0);
+    printf("You entered: %d\n", number);
+    return 0;
+}
+```
+
+Dans cet exemple, la boucle `do-while` garantit que l'utilisateur est invité à entrer un nombre au moins une fois. La condition `number <= 0` est vérifiée après la saisie.
+
+### Résumé des différences
+
+- **Moment de l'évaluation** : `while` évalue la condition avant chaque itération, tandis que `do-while` l'évalue après.
+- **Exécution minimale** : `while` peut ne pas exécuter le bloc du tout si la condition est initialement fausse, alors que `do-while` exécute toujours le bloc au moins une fois.
+- **Utilisation typique** : `while` est souvent utilisé pour des boucles où le nombre d'itérations peut être zéro, alors que `do-while` est préféré lorsque le bloc doit être exécuté au moins une fois.
+
+En conclusion, le choix entre `while` et `do-while` dépend de la nécessité d'exécuter ou non le bloc de code avant la première évaluation de la condition. Chacune de ces boucles offre des avantages spécifiques en fonction des besoins du programme.

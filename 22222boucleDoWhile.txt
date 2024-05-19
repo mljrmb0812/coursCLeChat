@@ -1,0 +1,67 @@
+22222boucleDoWhile
+
+La boucle `do-while` en C est une structure de contrôle itérative qui garantit l'exécution du bloc de code au moins une fois, indépendamment de la condition de continuation. Cette particularité la distingue de la boucle `while`, où la condition est évaluée avant l'exécution du bloc de code. La syntaxe générale de la boucle `do-while` est la suivante :
+
+```c
+do {
+    // Instructions à exécuter
+} while (condition);
+```
+
+1. **Bloc d'instructions** : Ce bloc de code est exécuté une première fois sans vérifier la condition. Ensuite, après chaque exécution, la condition est évaluée.
+   
+   ```c
+   do {
+       // Instructions
+   }
+   ```
+
+2. **Condition** : Cette expression est évaluée après chaque itération. Tant que la condition est vraie (différente de zéro), la boucle continue de s'exécuter. Lorsque la condition devient fausse, l'exécution de la boucle se termine.
+   
+   ```c
+   } while (condition);
+   ```
+
+Voici un exemple complet de boucle `do-while` en C qui affiche les nombres de 0 à 9 :
+
+```c
+#include <stdio.h>
+
+int main() {
+    int i = 0;
+    do {
+        printf("%d\n", i);
+        i++;
+    } while (i < 10);
+    return 0;
+}
+```
+
+Dans cet exemple :
+- **Initialisation** : `int i = 0;` initialise la variable `i` à 0 avant le début de la boucle.
+- **Bloc d'instructions** : `printf("%d\n", i);` affiche la valeur de `i`, puis `i++;` incrémente `i` de 1.
+- **Condition** : `i < 10;` est évaluée après chaque exécution du bloc d'instructions. Si cette condition est vraie, la boucle continue ; sinon, elle se termine.
+
+La boucle `do-while` est particulièrement utile dans des situations où il est nécessaire que le bloc de code s'exécute au moins une fois, quel que soit l'état initial de la condition. Par exemple, elle est souvent utilisée pour des opérations de saisie utilisateur, où une action doit être effectuée avant de vérifier une condition de répétition.
+
+Voici un autre exemple illustrant l'utilisation de la boucle `do-while` pour demander à l'utilisateur de saisir un nombre positif :
+
+```c
+#include <stdio.h>
+
+int main() {
+    int number;
+    do {
+        printf("Enter a positive number: ");
+        scanf("%d", &number);
+    } while (number <= 0);
+    printf("You entered: %d\n", number);
+    return 0;
+}
+```
+
+Dans cet exemple :
+- **Bloc d'instructions** : Le programme demande à l'utilisateur de saisir un nombre et le lit avec `scanf`.
+- **Condition** : `number <= 0` est évaluée après chaque saisie. Si le nombre est positif, la boucle se termine ; sinon, elle continue de demander un nombre.
+
+En résumé, la boucle `do-while` en C est une structure de contrôle puissante pour les situations où une exécution initiale du bloc de code est nécessaire, avant toute vérification de condition. Elle garantit au moins une exécution et est particulièrement adaptée aux scénarios de saisie et de validation de données.

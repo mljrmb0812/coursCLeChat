@@ -1,0 +1,10 @@
+21211AddSousMult
+
+Les opérations arithmétiques de base, telles que l'addition, la soustraction, la multiplication et la division, sont des concepts fondamentaux en programmation, notamment en langage C. L'addition est utilisée pour calculer la somme de deux valeurs, tandis que la soustraction détermine la différence entre deux valeurs. La multiplication permet de trouver le produit de deux nombres, tandis que la division divise un nombre par un autre pour obtenir un quotient. En langage C, ces opérations arithmétiques peuvent être réalisées à l'aide des opérateurs arithmétiques standard : + pour l'addition, - pour la soustraction, * pour la multiplication et / pour la division. Par exemple, a + b effectue une addition des valeurs contenues dans les variables a et b, tandis que a / b effectue une division de a par b. Il est important de noter que la division entière en C (utilisant l'opérateur /) tronque le résultat à la partie entière, tandis que la division réelle peut être réalisée avec des types de données appropriés tels que float ou double. Ces opérations arithmétiques de base sont omniprésentes dans la programmation en C et servent de blocs de construction essentiels pour la réalisation de calculs complexes et de logique algorithmique.
+
+
+
+
+
+
+

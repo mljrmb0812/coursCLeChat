@@ -1,0 +1,27 @@
+22111instructionIf
+
+L'instruction `if` est une pierre angulaire de la programmation en C, permettant d'exécuter des blocs de code de manière conditionnelle en fonction de l'évaluation d'une expression booléenne. La syntaxe de base de l'instruction `if` est simple mais puissante. Elle commence par le mot-clé `if`, suivi d'une expression entre parenthèses, appelée condition. Cette condition est évaluée à vrai ou faux. Si la condition est vraie, le bloc de code immédiatement après l'instruction `if` est exécuté. Si la condition est fausse, le bloc de code est ignoré et le programme passe à l'instruction suivante.
+
+La syntaxe générale de l'instruction `if` est la suivante :
+
+```c
+if (condition) {
+    // Bloc de code à exécuter si la condition est vraie
+}
+```
+
+Dans cet exemple, `condition` est une expression booléenne qui est évaluée. Si elle est vraie, le bloc de code entre accolades est exécuté. Sinon, le bloc de code est ignoré et l'exécution du programme continue.
+
+L'instruction `if` peut également être suivie par une ou plusieurs instructions `else if` et une instruction `else`, pour gérer plusieurs conditions. Par exemple :
+
+```c
+if (condition1) {
+    // Bloc de code à exécuter si condition1 est vraie
+} else if (condition2) {
+    // Bloc de code à exécuter si condition1 est fausse et condition2 est vraie
+} else {
+    // Bloc de code à exécuter si ni condition1 ni condition2 ne sont vraies
+}
+```
+
+Cela permet de créer des structures de contrôle conditionnelles plus complexes, où différents blocs de code sont exécutés en fonction de différentes conditions. En utilisant l'instruction `if`, les programmeurs peuvent créer des programmes capables de prendre des décisions intelligentes en fonction de l'état de différentes variables et de l'entrée utilisateur.

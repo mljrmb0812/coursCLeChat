@@ -1,0 +1,39 @@
+22221syntaxeWhile
+
+La boucle `while` en C est une structure de contrôle qui permet d'exécuter un bloc de code de manière répétitive tant qu'une condition donnée est vraie. Contrairement à la boucle `for`, la boucle `while` se base uniquement sur une condition de continuation et est souvent utilisée lorsque le nombre d'itérations n'est pas connu à l'avance. La syntaxe générale de la boucle `while` est la suivante :
+
+```c
+while (condition) {
+    // Instructions à exécuter tant que la condition est vraie
+}
+```
+
+1. **Condition** : Cette expression est évaluée avant chaque itération de la boucle. Tant que cette condition est vraie (c'est-à-dire différente de zéro), le bloc de code à l'intérieur de la boucle est exécuté. Lorsque la condition devient fausse, l'exécution de la boucle s'arrête.
+   
+   ```c
+   while (i < 10)
+   ```
+
+2. **Instructions** : Le bloc de code à l'intérieur de la boucle est exécuté tant que la condition est vraie. Ces instructions peuvent inclure diverses opérations, telles que l'incrémentation d'une variable, des calculs, ou des appels de fonctions.
+
+Voici un exemple complet d'utilisation de la boucle `while` en C pour afficher les nombres de 0 à 9 :
+
+```c
+#include <stdio.h>
+
+int main() {
+    int i = 0;
+    while (i < 10) {
+        printf("%d\n", i);
+        i++;
+    }
+    return 0;
+}
+```
+
+Dans cet exemple :
+- **Initialisation** : `int i = 0;` initialise la variable `i` à 0 avant le début de la boucle.
+- **Condition** : `i < 10;` est vérifiée avant chaque itération. Si cette condition est vraie, le bloc de code s'exécute ; sinon, la boucle se termine.
+- **Instructions** : `printf("%d\n", i);` affiche la valeur de `i`, puis `i++;` incrémente `i` de 1 après chaque itération.
+
+La boucle `while` est particulièrement utile lorsque le nombre d'itérations ne peut pas être déterminé à l'avance, par exemple, lors de la lecture de données depuis un fichier ou d'une entrée utilisateur jusqu'à ce qu'une certaine condition soit remplie. Elle offre une syntaxe simple et claire pour gérer des itérations basées sur des conditions dynamiques.

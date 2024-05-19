@@ -1,0 +1,7 @@
+21212Modulo
+
+L'opérateur modulo % est un outil puissant en programmation C, permettant de calculer le reste de la division entière entre deux nombres. Ce reste est le résultat obtenu après avoir divisé le premier nombre (appelé dividende) par le deuxième nombre (appelé diviseur), et en ne conservant que la partie restante. Par exemple, si l'on utilise l'opérateur modulo avec a % b, où a est le dividende et b est le diviseur, le résultat sera le reste de la division entière de a par b.
+
+L'opérateur modulo est utile dans de nombreux contextes de programmation, notamment pour déterminer si un nombre est pair ou impair (en utilisant n % 2, où n est le nombre), pour effectuer des opérations cycliques, ou pour travailler avec des périodes récurrentes telles que les jours de la semaine ou les heures de la journée.
+
+En outre, l'opérateur modulo est souvent utilisé pour effectuer des opérations sur des index ou des positions dans des tableaux ou des structures de données, en permettant de garantir que l'index reste dans des plages valides. En combinant l'opérateur modulo avec d'autres opérations arithmétiques, les programmeurs peuvent créer des algorithmes efficaces et élégants pour résoudre une variété de problèmes de programmation.

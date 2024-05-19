@@ -1,0 +1,13 @@
+21221operateurComparaison
+
+Les opérateurs de comparaison, tels que `==`, `!=`, `<`, `>`, `<=` et `>=`, sont des outils fondamentaux en programmation C, permettant de comparer les valeurs de différentes variables et d'effectuer des opérations de contrôle de flux conditionnelles. 
+
+L'opérateur `==` permet de vérifier si deux valeurs sont égales. Par exemple, `a == b` renverra vrai si la valeur de `a` est égale à la valeur de `b`, sinon faux.
+
+L'opérateur `!=` (différent de) vérifie si deux valeurs sont différentes. Par exemple, `a != b` renverra vrai si la valeur de `a` est différente de celle de `b`.
+
+Les opérateurs `<` (inférieur à) et `>` (supérieur à) permettent de vérifier si une valeur est inférieure ou supérieure à une autre, respectivement. Par exemple, `a < b` renverra vrai si la valeur de `a` est strictement inférieure à celle de `b`.
+
+Les opérateurs `<=` (inférieur ou égal à) et `>=` (supérieur ou égal à) vérifient si une valeur est inférieure ou égale à une autre, ou supérieure ou égale à une autre, respectivement. Par exemple, `a <= b` renverra vrai si la valeur de `a` est inférieure ou égale à celle de `b`.
+
+Ces opérateurs de comparaison sont couramment utilisés dans les instructions conditionnelles, telles que les instructions `if`, `else if` et `while`, pour prendre des décisions en fonction de la relation entre les valeurs de différentes variables. En combinant ces opérateurs avec des opérateurs logiques tels que `&&` (et logique) et `||` (ou logique), les programmeurs peuvent créer des expressions conditionnelles complexes pour contrôler le flux d'exécution de leurs programmes en fonction de multiples conditions.

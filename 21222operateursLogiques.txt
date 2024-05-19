@@ -1,0 +1,12 @@
+21222operateursLogiques
+
+
+Les opérateurs logiques, tels que && (ET logique), || (OU logique) et ! (NON logique), jouent un rôle crucial dans la construction de conditions complexes en langage C.
+
+L'opérateur && (ET logique) évalue à vrai si et seulement si les deux expressions qu'il connecte sont vraies. Par exemple, dans l'expression a && b, si à la fois a et b sont vraies, alors l'ensemble de l'expression est vrai ; sinon, il est faux.
+
+L'opérateur || (OU logique) évalue à vrai si au moins l'une des expressions qu'il connecte est vraie. Par exemple, dans l'expression a || b, si au moins l'une des variables a ou b est vraie, alors l'ensemble de l'expression est vrai ; il est faux uniquement si les deux sont fausses.
+
+L'opérateur ! (NON logique) est un opérateur unaire qui inverse la valeur de vérité de son opérande. Par exemple, !a évaluera à vrai si a est faux, et vice versa.
+
+Ces opérateurs logiques sont souvent utilisés en conjonction avec des opérateurs de comparaison pour construire des expressions conditionnelles complexes. Ils permettent aux programmeurs de spécifier des conditions logiques sophistiquées qui guident le flux d'exécution du programme en fonction de multiples variables et de multiples conditions. En utilisant judicieusement ces opérateurs, les programmeurs peuvent créer des structures de contrôle de flux efficaces et précises pour répondre aux exigences spécifiques de leurs programmes.

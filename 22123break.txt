@@ -1,0 +1,9 @@
+22123break
+
+Le mot-clé `break` est d'une importance capitale lors de l'utilisation des instructions `switch` en langage C. Son rôle principal est de terminer l'exécution de la structure de contrôle `switch` une fois qu'un cas correspondant à la valeur de l'expression évaluée a été trouvé et exécuté. Sans l'utilisation de `break`, l'exécution du programme continuerait dans les cas suivants de manière inattendue.
+
+L'absence de `break` dans un cas donné entraîne ce qu'on appelle un "débordement de cas" (ou "fallthrough"), où l'exécution continue dans les cas suivants sans tenir compte des valeurs des expressions. Cela peut conduire à des résultats inattendus ou indésirables dans le programme.
+
+Par conséquent, chaque bloc de code associé à un cas dans une instruction `switch` doit être terminé par une instruction `break`. Cette dernière permet de garantir que l'exécution de la structure `switch` se termine dès qu'un cas est satisfait, évitant ainsi une exécution accidentelle dans les cas suivants.
+
+En résumé, l'utilisation appropriée du mot-clé `break` est essentielle pour assurer le bon fonctionnement des instructions `switch` en langage C, en garantissant que seule l'action correspondant à la valeur de l'expression évaluée est exécutée, et en évitant les erreurs potentielles de débordement de cas.

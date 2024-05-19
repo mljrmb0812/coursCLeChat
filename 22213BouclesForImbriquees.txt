@@ -1,0 +1,75 @@
+22213BouclesForImbriquees
+
+Les boucles `for` imbriquées en C sont utilisées pour gérer des structures de données multidimensionnelles, telles que les tableaux à deux dimensions, ou pour effectuer des opérations complexes nécessitant des itérations multiples. Une boucle `for` imbriquée consiste en une boucle `for` à l'intérieur d'une autre boucle `for`. Chaque boucle a ses propres variables de contrôle et suit sa propre séquence d'initialisation, de condition et d'incrémentation.
+
+**Tableaux multidimensionnels :**
+L'utilisation la plus courante des boucles `for` imbriquées est le parcours des tableaux multidimensionnels. Par exemple, pour parcourir un tableau à deux dimensions :
+
+```c
+#include <stdio.h>
+
+int main() {
+    int matrix[3][3] = {
+        {1, 2, 3},
+        {4, 5, 6},
+        {7, 8, 9}
+    };
+
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 3; j++) {
+            printf("%d ", matrix[i][j]);
+        }
+        printf("\n");
+    }
+    return 0;
+}
+```
+
+Dans cet exemple, la première boucle `for` itère sur les lignes du tableau `matrix`, tandis que la boucle `for` imbriquée itère sur les colonnes. Chaque élément du tableau est ainsi parcouru et affiché.
+
+**Algorithmes complexes :**
+Les boucles `for` imbriquées sont également essentielles pour implémenter des algorithmes complexes, comme ceux utilisés en algèbre linéaire (multiplication de matrices), en tri (tri à bulles, tri par insertion) et en recherche (parcours exhaustif).
+
+**Multiplication de matrices :**
+Un exemple classique est la multiplication de matrices, où trois boucles `for` imbriquées sont souvent nécessaires :
+
+```c
+#include <stdio.h>
+
+int main() {
+    int A[2][3] = {
+        {1, 2, 3},
+        {4, 5, 6}
+    };
+    int B[3][2] = {
+        {7, 8},
+        {9, 10},
+        {11, 12}
+    };
+    int C[2][2] = {0};
+
+    for (int i = 0; i < 2; i++) {
+        for (int j = 0; j < 2; j++) {
+            for (int k = 0; k < 3; k++) {
+                C[i][j] += A[i][k] * B[k][j];
+            }
+        }
+    }
+
+    for (int i = 0; i < 2; i++) {
+        for (int j = 0; j < 2; j++) {
+            printf("%d ", C[i][j]);
+        }
+        printf("\n");
+    }
+
+    return 0;
+}
+```
+
+Dans cet exemple, les deux premières boucles `for` itèrent sur les lignes de la matrice `A` et les colonnes de la matrice `B`, tandis que la boucle `for` intérieure itère sur les éléments correspondants de ces lignes et colonnes pour effectuer le produit et la somme.
+
+**Complexité et performance :**
+L'utilisation des boucles `for` imbriquées augmente la complexité du programme. Par exemple, deux boucles imbriquées représentent une complexité de \(O(n^2)\), tandis que trois boucles imbriquées impliquent \(O(n^3)\). Il est crucial d'être conscient de cette complexité lors de l'écriture de programmes, car elle peut affecter significativement les performances, notamment pour les grandes valeurs de `n`.
+
+En conclusion, les boucles `for` imbriquées en C sont des outils puissants pour manipuler des structures de données complexes et implémenter des algorithmes sophistiqués. Bien que leur utilisation puisse accroître la complexité du code, elles permettent de résoudre efficacement des problèmes qui nécessitent plusieurs niveaux d'itération.

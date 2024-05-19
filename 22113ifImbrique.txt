@@ -1,0 +1,24 @@
+22113ifImbrique
+
+Les instructions `if` imbriquées permettent aux programmeurs de définir des conditions multiples et hiérarchiques dans leur code. Cette technique consiste à placer une instruction `if` à l'intérieur d'une autre instruction `if`, ce qui crée une structure de contrôle conditionnelle complexe.
+
+La syntaxe de base des instructions `if` imbriquées ressemble à ceci :
+
+```c
+if (condition1) {
+    // Bloc de code à exécuter si condition1 est vraie
+    if (condition2) {
+        // Bloc de code à exécuter si condition2 est vraie
+    } else {
+        // Bloc de code à exécuter si condition2 est fausse
+    }
+} else {
+    // Bloc de code à exécuter si condition1 est fausse
+}
+```
+
+Dans cet exemple, si `condition1` est vraie, le bloc de code à l'intérieur du premier `if` est exécuté. Ensuite, une autre condition, `condition2`, est évaluée à l'intérieur d'un autre bloc de code. Selon le résultat de cette évaluation, différents blocs de code peuvent être exécutés.
+
+Les instructions `if` imbriquées peuvent être utilisées pour créer des structures de contrôle conditionnelles complexes, dans lesquelles chaque niveau d'imbrication représente une condition spécifique à évaluer. Cette approche est souvent utilisée pour gérer des situations où plusieurs conditions doivent être remplies pour exécuter un bloc de code spécifique, ou lorsque des alternatives conditionnelles doivent être définies de manière hiérarchique.
+
+Cependant, il convient d'utiliser les instructions `if` imbriquées avec prudence, car une trop grande profondeur d'imbrication peut rendre le code difficile à lire et à comprendre. Dans certains cas, il peut être préférable d'utiliser des structures de contrôle alternatives, telles que des instructions `switch`, pour améliorer la lisibilité du code.

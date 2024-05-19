@@ -1,0 +1,48 @@
+22211strctrEtSntxBclFor
+
+En langage C, la boucle `for` est une structure de contrôle itérative qui permet d'exécuter un bloc de code plusieurs fois. La syntaxe générale de la boucle `for` est la suivante :
+
+```c
+for (initialisation; condition; incrémentation) {
+    // Instructions à exécuter
+}
+```
+
+1. **Initialisation** : Cette partie de la boucle est exécutée une seule fois, au début de la boucle. Elle est généralement utilisée pour initialiser une ou plusieurs variables de contrôle.
+   
+   ```c
+   int i = 0;
+   ```
+
+2. **Condition** : Cette expression est évaluée avant chaque itération de la boucle. Tant que cette condition est vraie (c'est-à-dire différente de zéro), la boucle continue de s'exécuter. Lorsque la condition devient fausse, la boucle se termine.
+   
+   ```c
+   i < 10;
+   ```
+
+3. **Incrémentation** : Cette expression est exécutée après chaque itération du bloc de code. Elle est souvent utilisée pour mettre à jour la variable de contrôle.
+   
+   ```c
+   i++;
+   ```
+
+Voici un exemple complet de boucle `for` en C qui affiche les nombres de 0 à 9 :
+
+```c
+#include <stdio.h>
+
+int main() {
+    for (int i = 0; i < 10; i++) {
+        printf("%d\n", i);
+    }
+    return 0;
+}
+```
+
+Dans cet exemple :
+- **Initialisation** : `int i = 0;` initialise la variable `i` à 0.
+- **Condition** : `i < 10;` vérifie si `i` est inférieur à 10.
+- **Incrémentation** : `i++;` augmente la valeur de `i` de 1 après chaque itération.
+- **Instructions** : `printf("%d\n", i);` affiche la valeur de `i` à chaque itération.
+
+La boucle `for` est particulièrement utile lorsque le nombre d'itérations est connu à l'avance. Elle offre une syntaxe concise et permet de regrouper l'initialisation, la condition et l'incrémentation en une seule ligne, rendant le code plus lisible et facile à comprendre.
