@@ -1,0 +1,32 @@
+41121FopenFclose
+
+**Paragraphe 1 : Ouverture et fermeture de fichiers avec fopen et fclose.**
+
+La gestion des fichiers en C repose sur l'utilisation de plusieurs fonctions de la bibliothèque standard, parmi lesquelles `fopen` et `fclose` sont essentielles pour ouvrir et fermer des fichiers respectivement. 
+
+La fonction `fopen` est utilisée pour ouvrir un fichier. Elle prend deux arguments : le nom du fichier à ouvrir (sous forme de chaîne de caractères) et le mode d'ouverture (également sous forme de chaîne de caractères). Le mode d'ouverture spécifie l'intention d'utilisation du fichier, comme lecture (`"r"`), écriture (`"w"`), ajout (`"a"`) et leurs variantes binaires (`"rb"`, `"wb"`, `"ab"`). Si l'ouverture du fichier réussit, `fopen` retourne un pointeur de type `FILE*` qui est utilisé pour interagir avec le fichier dans les opérations de lecture et d'écriture. Si l'ouverture échoue, généralement parce que le fichier n'existe pas ou les permissions sont insuffisantes, `fopen` retourne `NULL`.
+
+Voici un exemple d'utilisation de `fopen` pour ouvrir un fichier en mode lecture :
+
+```c
+FILE *file = fopen("example.txt", "r");
+if (file == NULL) {
+    // Gestion de l'erreur d'ouverture du fichier
+    perror("Error opening file");
+}
+```
+
+La fonction `fclose` est utilisée pour fermer un fichier précédemment ouvert avec `fopen`. Elle prend un seul argument : le pointeur `FILE*` retourné par `fopen`. Fermer un fichier libère les ressources associées et assure que toutes les données en mémoire tampon sont correctement écrites dans le fichier. Il est crucial de fermer tous les fichiers ouverts pour éviter les fuites de ressources et les corruptions de données. Si `fclose` réussit, elle retourne zéro ; en cas d'échec, elle retourne `EOF`.
+
+Voici un exemple d'utilisation de `fclose` :
+
+```c
+if (file != NULL) {
+    if (fclose(file) != 0) {
+        // Gestion de l'erreur de fermeture du fichier
+        perror("Error closing file");
+    }
+}
+```
+
+En résumé, `fopen` et `fclose` sont des fonctions fondamentales pour la gestion des fichiers en C. `fopen` permet d'ouvrir un fichier pour diverses opérations, tandis que `fclose` assure la libération des ressources associées en fermant le fichier de manière appropriée. Une gestion correcte de ces opérations est essentielle pour maintenir l'intégrité des fichiers et des ressources du système.

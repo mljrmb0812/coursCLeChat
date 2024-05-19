@@ -1,0 +1,11 @@
+41113realloc
+
+**Paragraphe 3 : Redimensionnement de mémoire avec realloc.**
+
+La fonction `realloc` de la bibliothèque standard du langage C permet de redimensionner une zone de mémoire précédemment allouée dynamiquement, que ce soit par `malloc`, `calloc`, ou même une précédente invocation de `realloc`. Cette fonction est utile lorsque la taille de la mémoire nécessaire change au cours de l'exécution d'un programme.
+
+`realloc` prend deux arguments : un pointeur vers la mémoire précédemment allouée et la nouvelle taille souhaitée en octets. Elle retourne un pointeur de type `void*` vers la nouvelle zone de mémoire, qui peut être la même ou différente de l'ancienne, en fonction de la disponibilité de la mémoire contiguë. Si la nouvelle taille est plus grande, les données existantes dans l'ancienne zone de mémoire sont copiées vers la nouvelle zone, et l'excédent de mémoire est non initialisé. Si la nouvelle taille est plus petite, les données excédentaires sont simplement coupées, et la mémoire réduite est récupérée.
+
+Un aspect crucial à considérer est que le pointeur retourné par `realloc` peut être différent du pointeur d'origine si la mémoire doit être déplacée pour satisfaire la demande de redimensionnement. Ainsi, il est important de mettre à jour le pointeur d'origine avec le nouveau pointeur retourné par `realloc`. Si `realloc` échoue à allouer la nouvelle taille, elle retourne `NULL`, et la mémoire pointée par le pointeur d'origine reste inchangée, évitant ainsi une perte de données.
+
+En résumé, `realloc` est une fonction puissante pour ajuster dynamiquement la taille de la mémoire allouée, offrant une grande flexibilité mais nécessitant une gestion attentive des pointeurs pour éviter les erreurs de mémoire et les fuites.

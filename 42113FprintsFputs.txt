@@ -1,0 +1,85 @@
+42113FprintsFputs
+
+### Partie 2 : Gestion des Fichiers
+#### Section 1 : Lecture et Écriture de Fichiers
+##### Article 1 : Manipulation des Fichiers
+###### Paragraphe 3 : Écriture de fichiers avec `fprintf` et `fputs`
+
+La manipulation des fichiers en programmation est une compétence essentielle qui permet de lire, écrire et gérer des données stockées dans des fichiers. Dans ce paragraphe, nous nous concentrerons sur l'écriture de fichiers à l'aide des fonctions `fprintf` et `fputs` en langage C.
+
+**1. `fprintf`**
+
+La fonction `fprintf` est utilisée pour écrire des données formatées dans un fichier. Elle est similaire à la fonction `printf`, mais au lieu d'écrire sur la sortie standard (l'écran), elle écrit dans un fichier. Voici la syntaxe de `fprintf` :
+
+```c
+int fprintf(FILE *stream, const char *format, ...);
+```
+
+- `stream` : un pointeur vers le fichier où les données seront écrites.
+- `format` : une chaîne de caractères de format, similaire à celle utilisée avec `printf`.
+- `...` : les arguments supplémentaires correspondant aux spécificateurs de format dans `format`.
+
+**Exemple :**
+
+```c
+#include <stdio.h>
+
+int main() {
+    FILE *fp = fopen("example.txt", "w");
+    if (fp == NULL) {
+        perror("Erreur à l'ouverture du fichier");
+        return 1;
+    }
+
+    int age = 25;
+    double taille = 1.75;
+    fprintf(fp, "Âge : %d ans\n", age);
+    fprintf(fp, "Taille : %.2f mètres\n", taille);
+
+    fclose(fp);
+    return 0;
+}
+```
+
+Dans cet exemple, `fprintf` écrit des informations formatées sur l'âge et la taille dans le fichier `example.txt`.
+
+**2. `fputs`**
+
+La fonction `fputs` est utilisée pour écrire une chaîne de caractères dans un fichier. Contrairement à `fprintf`, elle n'inclut pas de spécificateurs de format et ne gère que des chaînes de caractères simples. Voici la syntaxe de `fputs` :
+
+```c
+int fputs(const char *str, FILE *stream);
+```
+
+- `str` : la chaîne de caractères à écrire.
+- `stream` : un pointeur vers le fichier où la chaîne sera écrite.
+
+**Exemple :**
+
+```c
+#include <stdio.h>
+
+int main() {
+    FILE *fp = fopen("example.txt", "w");
+    if (fp == NULL) {
+        perror("Erreur à l'ouverture du fichier");
+        return 1;
+    }
+
+    const char *text = "Bonjour, monde!";
+    fputs(text, fp);
+    fputs("\nCeci est une autre ligne de texte.\n", fp);
+
+    fclose(fp);
+    return 0;
+}
+```
+
+Dans cet exemple, `fputs` écrit des chaînes de caractères dans le fichier `example.txt`. Notez que `fputs` n'ajoute pas automatiquement de caractère de nouvelle ligne (`\n`), donc si vous souhaitez séparer les lignes, vous devez l'inclure dans la chaîne de caractères.
+
+**Différences et Utilisation**
+
+- `fprintf` est utile lorsque vous avez besoin d'écrire des données formatées, incluant des variables et des spécificateurs de format.
+- `fputs` est plus simple et direct pour écrire des chaînes de caractères sans formatage.
+
+La compréhension et l'utilisation efficaces de `fprintf` et `fputs` permettent de manipuler les fichiers de manière flexible et puissante, facilitant la gestion des données dans vos programmes.

@@ -1,0 +1,22 @@
+41114free
+
+**Paragraphe 4 : Libération de mémoire avec free.**
+
+La fonction `free` de la bibliothèque standard du langage C est utilisée pour libérer la mémoire allouée dynamiquement par les fonctions `malloc`, `calloc`, ou `realloc`. Lorsque de la mémoire est allouée dynamiquement, elle reste réservée jusqu'à ce qu'elle soit explicitement libérée, même si elle n'est plus nécessaire. Ne pas libérer cette mémoire peut entraîner des fuites de mémoire, où la mémoire inutilisée s'accumule et réduit la quantité de mémoire disponible pour d'autres processus, ce qui peut finalement mener à des erreurs et à l'épuisement de la mémoire.
+
+`free` prend un seul argument : un pointeur vers la zone de mémoire à libérer. Après l'appel à `free`, la mémoire est rendue disponible pour être réallouée par le système. Il est important de noter que l'utilisation du pointeur après avoir appelé `free` est invalide et peut provoquer des comportements indéterminés, car la mémoire n'est plus réservée pour le programme. Pour éviter cela, il est souvent recommandé de définir le pointeur à `NULL` après l'appel à `free`, afin de s'assurer que tout accès futur à ce pointeur échoue proprement.
+
+Voici un exemple de l'utilisation de `free` :
+
+```c
+int *ptr = (int*)malloc(10 * sizeof(int));
+if (ptr != NULL) {
+    // Utilisation de la mémoire allouée
+    // ...
+    // Libération de la mémoire
+    free(ptr);
+    ptr = NULL; // Éviter l'utilisation ultérieure du pointeur libéré
+}
+```
+
+En résumé, `free` est une fonction essentielle pour la gestion de la mémoire en C, permettant de libérer la mémoire allouée dynamiquement et d'éviter les fuites de mémoire. Une gestion correcte de l'utilisation des pointeurs après la libération de la mémoire est cruciale pour maintenir la stabilité et l'efficacité du programme.

@@ -1,0 +1,103 @@
+42123rewind
+
+### Partie 2 : Gestion des Fichiers
+#### Section 1 : Lecture et Écriture de Fichiers
+##### Article 1 : Manipulation des Fichiers
+###### Paragraphe 3 : Remise à zéro du curseur avec `rewind`
+
+La fonction `rewind` en langage C est utilisée pour remettre à zéro le curseur de fichier, c'est-à-dire pour le repositionner au début du fichier. Cela est particulièrement utile lorsque vous avez besoin de relire un fichier depuis le début après avoir effectué des opérations de lecture ou d'écriture.
+
+**1. Syntaxe de `rewind`**
+
+```c
+void rewind(FILE *stream);
+```
+
+- `stream` : un pointeur vers le fichier ouvert.
+
+Contrairement à `fseek`, `rewind` ne retourne pas de valeur et ne prend pas d'offset ni d'origine comme paramètres. Elle réinitialise simplement le curseur de fichier au début et efface les indicateurs d'erreur associés au fichier.
+
+**2. Exemple d'utilisation de `rewind`**
+
+Supposons que nous avons un fichier que nous voulons lire deux fois : une première fois entièrement, puis le relire depuis le début après avoir utilisé `rewind`.
+
+```c
+#include <stdio.h>
+
+int main() {
+    FILE *fp = fopen("example.txt", "r");
+    if (fp == NULL) {
+        perror("Erreur à l'ouverture du fichier");
+        return 1;
+    }
+
+    // Lire et afficher tout le fichier
+    int ch;
+    printf("Lecture initiale du fichier :\n");
+    while ((ch = fgetc(fp)) != EOF) {
+        putchar(ch);
+    }
+
+    // Remettre le curseur au début du fichier
+    rewind(fp);
+
+    // Relire et afficher tout le fichier
+    printf("\n\nRelecture du fichier après rewind :\n");
+    while ((ch = fgetc(fp)) != EOF) {
+        putchar(ch);
+    }
+
+    fclose(fp);
+    return 0;
+}
+```
+
+Dans cet exemple, le programme ouvre `example.txt` en mode lecture et lit tout son contenu, l'affichant à l'écran. Ensuite, il utilise `rewind(fp)` pour repositionner le curseur au début du fichier et relit à nouveau tout le fichier.
+
+**3. Utilisations courantes de `rewind`**
+
+- **Relire un fichier** : Après avoir parcouru un fichier, vous pouvez utiliser `rewind` pour le relire depuis le début sans avoir à le fermer et le rouvrir.
+- **Réinitialiser les opérations de fichier** : Si une opération de lecture ou d'écriture échoue, `rewind` peut être utilisé pour réinitialiser le curseur et tenter l'opération à nouveau.
+- **Effacer les erreurs** : `rewind` efface également les indicateurs d'erreur associés au fichier, ce qui peut être utile pour gérer des situations où le fichier est dans un état d'erreur.
+
+**4. Exemple avancé : traitement de fichier avec remise à zéro**
+
+Imaginons un scénario où nous analysons les données d'un fichier, effectuons des calculs, puis revenons au début du fichier pour une deuxième passe de traitement.
+
+```c
+#include <stdio.h>
+
+int main() {
+    FILE *fp = fopen("data.txt", "r");
+    if (fp == NULL) {
+        perror("Erreur à l'ouverture du fichier");
+        return 1;
+    }
+
+    // Première passe : compter les lignes
+    int ch;
+    int line_count = 0;
+    while ((ch = fgetc(fp)) != EOF) {
+        if (ch == '\n') {
+            line_count++;
+        }
+    }
+    printf("Nombre de lignes : %d\n", line_count);
+
+    // Remettre le curseur au début du fichier
+    rewind(fp);
+
+    // Deuxième passe : traitement des lignes
+    printf("Contenu du fichier :\n");
+    while ((ch = fgetc(fp)) != EOF) {
+        putchar(ch);
+    }
+
+    fclose(fp);
+    return 0;
+}
+```
+
+Dans cet exemple, le programme ouvre `data.txt` et compte le nombre de lignes lors de la première passe. Ensuite, il utilise `rewind(fp)` pour repositionner le curseur au début du fichier et affiche le contenu du fichier lors de la deuxième passe.
+
+La fonction `rewind` est une méthode simple et efficace pour réinitialiser le curseur de fichier au début, facilitant les opérations répétitives de lecture ou de traitement des fichiers sans nécessiter de fermeture et réouverture du fichier.

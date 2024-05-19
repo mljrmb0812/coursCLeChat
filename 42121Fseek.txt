@@ -1,0 +1,99 @@
+42121Fseek
+
+### Partie 2 : Gestion des Fichiers
+#### Section 1 : Lecture et Écriture de Fichiers
+##### Article 1 : Manipulation des Fichiers
+###### Paragraphe 1 : Utilisation de `fseek` pour déplacer le curseur de fichier
+
+La fonction `fseek` en langage C est utilisée pour déplacer le curseur de positionnement dans un fichier ouvert. Cela permet de lire ou d'écrire des données à des positions spécifiques dans le fichier, offrant ainsi une grande flexibilité pour manipuler les fichiers.
+
+**1. Syntaxe de `fseek`**
+
+```c
+int fseek(FILE *stream, long int offset, int origin);
+```
+
+- `stream` : un pointeur vers le fichier ouvert.
+- `offset` : le déplacement, en octets, par rapport à la position spécifiée par `origin`.
+- `origin` : un entier qui spécifie la position de référence pour le déplacement du curseur. Les valeurs possibles sont :
+  - `SEEK_SET` : début du fichier.
+  - `SEEK_CUR` : position actuelle du curseur.
+  - `SEEK_END` : fin du fichier.
+
+**2. Exemple d'utilisation de `fseek`**
+
+Supposons que nous ayons un fichier contenant du texte, et que nous voulons lire à partir d'une position spécifique.
+
+```c
+#include <stdio.h>
+
+int main() {
+    FILE *fp = fopen("example.txt", "r");
+    if (fp == NULL) {
+        perror("Erreur à l'ouverture du fichier");
+        return 1;
+    }
+
+    // Déplacer le curseur à 10 octets depuis le début du fichier
+    if (fseek(fp, 10, SEEK_SET) != 0) {
+        perror("Erreur lors du déplacement du curseur");
+        fclose(fp);
+        return 1;
+    }
+
+    // Lire et afficher le caractère à la position actuelle du curseur
+    int ch = fgetc(fp);
+    if (ch != EOF) {
+        printf("Caractère à la position 10 : %c\n", (char)ch);
+    } else {
+        perror("Erreur lors de la lecture du caractère");
+    }
+
+    fclose(fp);
+    return 0;
+}
+```
+
+Dans cet exemple, `fseek(fp, 10, SEEK_SET)` déplace le curseur de fichier à 10 octets depuis le début du fichier `example.txt`. Ensuite, `fgetc(fp)` lit le caractère à cette position et l'affiche.
+
+**3. Utilisations courantes de `fseek`**
+
+- **Navigation dans un fichier** : Vous pouvez utiliser `fseek` pour accéder rapidement à différentes parties d'un fichier sans avoir à lire séquentiellement depuis le début.
+- **Modification de données** : En déplaçant le curseur à une position spécifique, vous pouvez directement écrire de nouvelles données à cet endroit sans affecter le reste du fichier.
+- **Gestion des fichiers binaires** : Pour les fichiers binaires, où les données n'ont pas de structure textuelle, `fseek` est particulièrement utile pour accéder aux données spécifiques de manière efficace.
+
+**4. Exemple avancé : écriture à une position spécifique**
+
+```c
+#include <stdio.h>
+
+int main() {
+    FILE *fp = fopen("example.txt", "r+");
+    if (fp == NULL) {
+        perror("Erreur à l'ouverture du fichier");
+        return 1;
+    }
+
+    // Déplacer le curseur à 5 octets depuis le début du fichier
+    if (fseek(fp, 5, SEEK_SET) != 0) {
+        perror("Erreur lors du déplacement du curseur");
+        fclose(fp);
+        return 1;
+    }
+
+    // Écrire une chaîne de caractères à la position actuelle du curseur
+    const char *text = "INSERT";
+    if (fputs(text, fp) == EOF) {
+        perror("Erreur lors de l'écriture du texte");
+    } else {
+        printf("Texte écrit avec succès à la position 5.\n");
+    }
+
+    fclose(fp);
+    return 0;
+}
+```
+
+Dans cet exemple, le programme ouvre `example.txt` en mode lecture et écriture (`"r+"`). Après avoir déplacé le curseur à la 5e position avec `fseek(fp, 5, SEEK_SET)`, il utilise `fputs` pour insérer la chaîne "INSERT" à cette position.
+
+La fonction `fseek` est un outil puissant pour la gestion des fichiers en C, permettant de contrôler précisément où lire et écrire dans un fichier. Cela améliore l'efficacité et la flexibilité de la manipulation des fichiers dans vos programmes.

@@ -1,0 +1,11 @@
+41112DifferenceMallocCalloc
+
+**Paragraphe 2 : Différence entre malloc et calloc.**
+
+`malloc` et `calloc` sont deux fonctions de la bibliothèque standard du langage C utilisées pour l'allocation dynamique de mémoire, mais elles présentent des différences importantes dans leur fonctionnement et leur utilisation. 
+
+La fonction `malloc` (memory allocation) alloue une zone de mémoire contiguë d'une taille spécifiée en octets. Elle prend en paramètre le nombre total d'octets à allouer et retourne un pointeur de type `void*` vers le début de la zone allouée. Cependant, `malloc` ne initialise pas la mémoire allouée, ce qui signifie que les valeurs contenues dans cette mémoire sont indéterminées.
+
+En revanche, `calloc` (contiguous allocation) alloue également de la mémoire de manière dynamique mais avec deux différences principales. Premièrement, `calloc` prend deux paramètres : le nombre d'éléments et la taille de chaque élément. Par exemple, pour allouer un tableau de 10 entiers, on utiliserait `calloc(10, sizeof(int))`. Deuxièmement, `calloc` initialise la mémoire allouée à zéro. Cela garantit que tous les octets de la zone de mémoire sont mis à 0, ce qui peut être utile pour éviter des comportements indéterminés liés à des valeurs résiduelles.
+
+En résumé, la principale différence entre `malloc` et `calloc` réside dans le fait que `malloc` alloue une mémoire non initialisée alors que `calloc` alloue une mémoire initialisée à zéro, en plus de prendre des paramètres différents pour spécifier la taille de la mémoire à allouer.

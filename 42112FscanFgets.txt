@@ -1,0 +1,55 @@
+42112FscanFgets
+
+**Paragraphe 2 : Lecture de fichiers avec fscanf et fgets.**
+
+Pour lire le contenu d'un fichier en C, les fonctions `fscanf` et `fgets` sont couramment utilisées. Chacune de ces fonctions offre des avantages spécifiques en fonction du type de lecture requis.
+
+### Utilisation de `fscanf`
+
+`fscanf` est une fonction de la bibliothèque standard C qui permet de lire des données formatées à partir d'un fichier, de manière similaire à la fonction `scanf` utilisée pour lire des entrées depuis la console. `fscanf` prend en paramètres un pointeur vers un fichier (`FILE*`), une chaîne de format spécifiant les types de données à lire, et les adresses des variables où les données lues seront stockées.
+
+Voici un exemple de lecture de données formatées depuis un fichier texte :
+
+```c
+FILE *file = fopen("data.txt", "r");
+if (file != NULL) {
+    int number;
+    char name[50];
+    while (fscanf(file, "%d %49s", &number, name) == 2) {
+        printf("Number: %d, Name: %s\n", number, name);
+    }
+    fclose(file);
+} else {
+    perror("Error opening file");
+}
+```
+
+Dans cet exemple, `fscanf` lit des paires de données composées d'un entier et d'une chaîne de caractères depuis le fichier `data.txt`.
+
+### Utilisation de `fgets`
+
+`fgets` est une fonction de la bibliothèque standard C qui lit une ligne entière depuis un fichier. Elle est particulièrement utile pour lire des lignes de texte de longueur variable. `fgets` prend trois paramètres : un pointeur vers un tableau de caractères où la ligne lue sera stockée, la taille maximale à lire (y compris le caractère nul de fin de ligne), et un pointeur vers le fichier (`FILE*`).
+
+Voici un exemple de lecture de lignes depuis un fichier texte :
+
+```c
+FILE *file = fopen("data.txt", "r");
+if (file != NULL) {
+    char line[100];
+    while (fgets(line, sizeof(line), file) != NULL) {
+        printf("Line: %s", line);
+    }
+    fclose(file);
+} else {
+    perror("Error opening file");
+}
+```
+
+Dans cet exemple, `fgets` lit et affiche chaque ligne du fichier `data.txt`. Contrairement à `fscanf`, `fgets` lit une ligne entière jusqu'à la fin de ligne ou jusqu'à ce que la taille spécifiée soit atteinte.
+
+### Comparaison de `fscanf` et `fgets`
+
+- **`fscanf`** est idéal pour lire des données formatées de manière structurée (comme des nombres et des chaînes dans un format spécifique). Cependant, il peut être sujet à des erreurs si le format des données dans le fichier ne correspond pas exactement au format attendu.
+- **`fgets`** est plus robuste pour lire des lignes entières de texte, ce qui peut ensuite être traité par d'autres fonctions comme `sscanf` si un traitement formaté est nécessaire. Il est moins susceptible de provoquer des erreurs dues à un mauvais formatage dans le fichier.
+
+En résumé, le choix entre `fscanf` et `fgets` dépend du type de données que vous devez lire et de la robustesse nécessaire pour traiter des formats de fichier potentiellement irréguliers.

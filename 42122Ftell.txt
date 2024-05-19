@@ -1,0 +1,134 @@
+42122Ftell
+
+### Partie 2 : Gestion des Fichiers
+#### Section 1 : Lecture et Écriture de Fichiers
+##### Article 1 : Manipulation des Fichiers
+###### Paragraphe 2 : Utilisation de `ftell` pour obtenir la position actuelle
+
+La fonction `ftell` en langage C est utilisée pour obtenir la position actuelle du curseur de fichier. Cette position est exprimée en nombre d'octets depuis le début du fichier. Connaître la position actuelle du curseur peut être utile pour diverses opérations de manipulation de fichiers, telles que sauvegarder un point de reprise ou déterminer la longueur de la portion de fichier déjà lue ou écrite.
+
+**1. Syntaxe de `ftell`**
+
+```c
+long int ftell(FILE *stream);
+```
+
+- `stream` : un pointeur vers le fichier ouvert.
+
+La fonction `ftell` retourne la position actuelle du curseur de fichier. Si une erreur survient, elle retourne `-1L` et la variable globale `errno` est définie à une valeur indiquant l'erreur.
+
+**2. Exemple d'utilisation de `ftell`**
+
+Supposons que nous souhaitons lire un fichier et à un certain point, nous voulons connaître la position actuelle du curseur.
+
+```c
+#include <stdio.h>
+
+int main() {
+    FILE *fp = fopen("example.txt", "r");
+    if (fp == NULL) {
+        perror("Erreur à l'ouverture du fichier");
+        return 1;
+    }
+
+    // Lire les premiers 10 caractères du fichier
+    for (int i = 0; i < 10; i++) {
+        int ch = fgetc(fp);
+        if (ch == EOF) {
+            perror("Erreur lors de la lecture du fichier");
+            fclose(fp);
+            return 1;
+        }
+        putchar(ch);
+    }
+
+    // Obtenir la position actuelle du curseur
+    long pos = ftell(fp);
+    if (pos == -1L) {
+        perror("Erreur lors de l'obtention de la position du curseur");
+    } else {
+        printf("\nPosition actuelle du curseur : %ld\n", pos);
+    }
+
+    fclose(fp);
+    return 0;
+}
+```
+
+Dans cet exemple, le programme ouvre `example.txt` en mode lecture et lit les dix premiers caractères. Après la lecture, il utilise `ftell` pour obtenir et afficher la position actuelle du curseur, qui devrait être 10 si la lecture s'est déroulée correctement.
+
+**3. Utilisations courantes de `ftell`**
+
+- **Sauvegarde de la position du curseur** : Vous pouvez sauvegarder la position actuelle du curseur pour y revenir plus tard en utilisant `fseek`.
+- **Calcul de la taille de données lues/écrites** : En combinant `ftell` avec des opérations de lecture/écriture, vous pouvez déterminer combien d'octets ont été lus ou écrits depuis une certaine position.
+- **Débogage** : `ftell` peut être utilisé pour vérifier que le curseur de fichier se déplace comme prévu lors de la lecture ou de l'écriture.
+
+**4. Exemple avancé : sauvegarde et reprise de la lecture**
+
+```c
+#include <stdio.h>
+
+int main() {
+    FILE *fp = fopen("example.txt", "r");
+    if (fp == NULL) {
+        perror("Erreur à l'ouverture du fichier");
+        return 1;
+    }
+
+    // Lire les premiers 10 caractères
+    for (int i = 0; i < 10; i++) {
+        int ch = fgetc(fp);
+        if (ch == EOF) {
+            perror("Erreur lors de la lecture du fichier");
+            fclose(fp);
+            return 1;
+        }
+        putchar(ch);
+    }
+
+    // Sauvegarder la position actuelle du curseur
+    long pos = ftell(fp);
+    if (pos == -1L) {
+        perror("Erreur lors de l'obtention de la position du curseur");
+        fclose(fp);
+        return 1;
+    }
+
+    // Lire et afficher les 10 prochains caractères
+    for (int i = 0; i < 10; i++) {
+        int ch = fgetc(fp);
+        if (ch == EOF) {
+            perror("Erreur lors de la lecture du fichier");
+            fclose(fp);
+            return 1;
+        }
+        putchar(ch);
+    }
+
+    // Revenir à la position sauvegardée
+    if (fseek(fp, pos, SEEK_SET) != 0) {
+        perror("Erreur lors du déplacement du curseur");
+        fclose(fp);
+        return 1;
+    }
+
+    // Lire et afficher les 10 prochains caractères à partir de la position sauvegardée
+    printf("\nRelecture à partir de la position sauvegardée :\n");
+    for (int i = 0; i < 10; i++) {
+        int ch = fgetc(fp);
+        if (ch == EOF) {
+            perror("Erreur lors de la lecture du fichier");
+            fclose(fp);
+            return 1;
+        }
+        putchar(ch);
+    }
+
+    fclose(fp);
+    return 0;
+}
+```
+
+Dans cet exemple, après avoir lu et affiché les premiers 10 caractères du fichier, la position du curseur est sauvegardée. Le programme lit ensuite 10 autres caractères, puis revient à la position initialement sauvegardée pour relire 10 caractères supplémentaires à partir de cette position.
+
+La fonction `ftell` est un outil précieux pour le contrôle précis de la position du curseur dans un fichier, permettant une manipulation flexible et efficace des fichiers dans les programmes en C.
