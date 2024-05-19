@@ -1,0 +1,59 @@
+32112AccesAuxElementsDuTableau
+
+### Paragraphe 2 : Accès aux éléments du tableau
+
+En langage C, les éléments d'un tableau sont accessibles à l'aide de leur indice, qui représente leur position dans le tableau. L'indice du premier élément d'un tableau est 0, et l'indice du dernier élément est taille-1, où taille est la taille du tableau.
+
+### Syntaxe d'accès aux éléments du tableau
+
+Pour accéder à un élément spécifique du tableau, on utilise la syntaxe suivante :
+
+```c
+nom_tableau[indice]
+```
+
+- **nom_tableau** : Le nom du tableau.
+- **indice** : L'indice de l'élément à accéder.
+
+#### Exemple d'accès aux éléments du tableau :
+
+```c
+int entiers[5] = {10, 20, 30, 40, 50};
+printf("Premier élément : %d\n", entiers[0]);   // Accès au premier élément
+printf("Dernier élément : %d\n", entiers[4]);   // Accès au dernier élément
+```
+
+Dans cet exemple, `entiers[0]` donne accès au premier élément du tableau `entiers`, qui a la valeur `10`, tandis que `entiers[4]` donne accès au dernier élément du tableau, qui a la valeur `50`.
+
+### Utilisation des boucles pour accéder aux éléments du tableau
+
+Les boucles sont souvent utilisées pour parcourir tous les éléments du tableau. Cela peut être fait en utilisant une boucle `for` ou `while` pour itérer sur tous les indices du tableau.
+
+#### Exemple d'utilisation d'une boucle `for` pour parcourir un tableau :
+
+```c
+int entiers[5] = {10, 20, 30, 40, 50};
+for (int i = 0; i < 5; i++) {
+    printf("Element %d : %d\n", i, entiers[i]);
+}
+```
+
+Dans cet exemple, la boucle `for` itère sur tous les indices du tableau `entiers` et affiche chaque élément avec son indice.
+
+### Manipulation des éléments du tableau
+
+Les éléments d'un tableau peuvent être lus, modifiés ou utilisés dans des opérations comme n'importe quelle autre variable. Par exemple, vous pouvez assigner une nouvelle valeur à un élément du tableau ou utiliser l'élément dans une expression.
+
+#### Exemple de modification d'un élément du tableau :
+
+```c
+int entiers[5] = {10, 20, 30, 40, 50};
+entiers[2] = 35;  // Modifier la valeur du troisième élément
+printf("Nouvelle valeur du troisième élément : %d\n", entiers[2]);
+```
+
+Dans cet exemple, la valeur du troisième élément du tableau `entiers` est modifiée pour être `35`.
+
+### Conclusion
+
+L'accès aux éléments du tableau en C est fondamental pour travailler avec des données structurées. Comprendre la syntaxe d'accès aux éléments du tableau et comment les manipuler est essentiel pour une programmation efficace en C. Les boucles sont souvent utilisées pour parcourir tous les éléments du tableau, ce qui permet d'effectuer des opérations sur chaque élément ou de les afficher.

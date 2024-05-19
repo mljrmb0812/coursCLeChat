@@ -1,0 +1,80 @@
+31121VariablesLocalesGlobales
+
+### Paragraphe 1 : Variables locales et globales en C
+
+En langage C, les variables peuvent être classées en deux catégories principales selon leur portée et leur durée de vie : les variables locales et les variables globales. Comprendre la distinction entre ces deux types de variables est crucial pour une programmation efficace et pour éviter les erreurs de portée et de conflits de noms.
+
+### Variables locales
+
+Les variables locales sont déclarées à l'intérieur d'une fonction ou d'un bloc de code (tel qu'une boucle ou une condition) et ne sont accessibles qu'à l'intérieur de cette fonction ou de ce bloc. Elles sont créées lorsque la fonction ou le bloc est exécuté et détruites une fois que l'exécution de la fonction ou du bloc est terminée.
+
+#### Caractéristiques des variables locales :
+1. **Portée** : La portée d'une variable locale est limitée à la fonction ou au bloc où elle est déclarée.
+2. **Durée de vie** : Une variable locale est créée à l'entrée dans la fonction ou le bloc et détruite à sa sortie.
+3. **Accès** : Les variables locales ne peuvent pas être accédées à l'extérieur de la fonction ou du bloc où elles sont déclarées.
+
+#### Exemple :
+
+```c
+#include <stdio.h>
+
+void fonction() {
+    int locale = 10;  // Variable locale
+    printf("Variable locale : %d\n", locale);
+}
+
+int main() {
+    fonction();
+    // printf("%d", locale);  // Erreur : locale n'est pas accessible ici
+    return 0;
+}
+```
+
+Dans cet exemple, `locale` est une variable locale à la fonction `fonction` et n'est pas accessible dans `main`.
+
+### Variables globales
+
+Les variables globales sont déclarées en dehors de toutes les fonctions, généralement au début du fichier source. Elles sont accessibles à partir de n'importe quelle fonction du même fichier ou de fichiers différents (si elles sont déclarées externes).
+
+#### Caractéristiques des variables globales :
+1. **Portée** : La portée d'une variable globale est le programme entier.
+2. **Durée de vie** : Une variable globale est créée lorsque le programme commence et détruite lorsque le programme se termine.
+3. **Accès** : Les variables globales peuvent être accédées par n'importe quelle fonction du programme.
+
+#### Exemple :
+
+```c
+#include <stdio.h>
+
+int globale = 20;  // Variable globale
+
+void fonction() {
+    printf("Variable globale dans fonction : %d\n", globale);
+}
+
+int main() {
+    printf("Variable globale dans main : %d\n", globale);
+    fonction();
+    return 0;
+}
+```
+
+Dans cet exemple, `globale` est une variable globale accessible à la fois dans `main` et dans `fonction`.
+
+### Comparaison entre variables locales et globales
+
+1. **Portée** :
+   - **Locale** : Limitée à la fonction ou au bloc où elle est déclarée.
+   - **Globale** : Accessible partout dans le programme.
+
+2. **Durée de vie** :
+   - **Locale** : Durée de vie limitée à l'exécution de la fonction ou du bloc.
+   - **Globale** : Durée de vie du début à la fin de l'exécution du programme.
+
+3. **Utilisation** :
+   - **Locale** : Utilisée pour des tâches spécifiques à une fonction ou un bloc, minimisant les risques de conflit de noms et facilitant la gestion de la mémoire.
+   - **Globale** : Utilisée pour les données qui doivent être partagées entre plusieurs fonctions, mais nécessitant une gestion attentive pour éviter les effets de bord et les conflits.
+
+### Conclusion
+
+Les variables locales et globales en C jouent des rôles distincts et complémentaires. Les variables locales offrent une portée limitée et une gestion de mémoire efficace, tandis que les variables globales permettent le partage de données à travers différentes parties d'un programme. Le choix entre l'utilisation de variables locales ou globales dépend du contexte et des besoins spécifiques du programme, et une bonne pratique de programmation consiste à minimiser l'utilisation de variables globales pour éviter des erreurs complexes et des conflits.

@@ -1,0 +1,71 @@
+31122UtilisationStatic
+
+### Paragraphe 2 : Utilisation de `static` pour la portée des variables
+
+En langage C, le mot-clé `static` peut être utilisé pour modifier la portée et la durée de vie des variables, leur conférant des propriétés différentes par rapport aux variables non statiques. L'utilisation de `static` permet de restreindre la portée d'une variable à un bloc, une fonction ou un fichier, et de prolonger sa durée de vie au-delà de l'exécution normale du bloc ou de la fonction.
+
+### Variables statiques
+
+Une variable statique déclarée à l'intérieur d'une fonction conserve sa valeur entre les appels successifs de la fonction. Une variable statique déclarée à l'extérieur de toutes les fonctions (au niveau du fichier) est visible uniquement dans ce fichier, ce qui en fait une variable globale statique.
+
+#### Caractéristiques des variables statiques :
+1. **Portée** : Limitée au bloc, à la fonction ou au fichier où elle est déclarée.
+2. **Durée de vie** : La durée de vie d'une variable statique est prolongée pendant toute l'exécution du programme.
+3. **Initialisation** : Les variables statiques sont initialisées une seule fois lors du premier appel de la fonction ou au démarrage du programme (pour les variables globales statiques).
+
+#### Exemples :
+
+```c
+#include <stdio.h>
+
+void fonction() {
+    static int statique = 0;  // Variable statique
+    int locale = 0;           // Variable locale
+
+    statique++;
+    locale++;
+
+    printf("Statique : %d, Locale : %d\n", statique, locale);
+}
+
+int main() {
+    for (int i = 0; i < 3; i++) {
+        fonction();
+    }
+    return 0;
+}
+```
+
+Dans cet exemple, `statique` est une variable statique et `locale` est une variable locale. La variable `statique` conserve sa valeur entre les appels successifs de la fonction, tandis que la variable `locale` est réinitialisée à chaque appel de la fonction.
+
+### Variables statiques locales vs globales
+
+Les variables statiques locales et globales partagent certaines caractéristiques, telles que leur durée de vie prolongée et leur initialisation unique. Cependant, les variables statiques locales sont limitées à la portée de la fonction où elles sont déclarées, tandis que les variables statiques globales sont visibles dans tout le fichier où elles sont déclarées, mais restent invisibles à l'extérieur du fichier.
+
+#### Exemple :
+
+```c
+// Fichier : exemple.c
+
+#include <stdio.h>
+
+static int globale_statique = 0;  // Variable globale statique
+
+void fonction() {
+    static int locale_statique = 0;  // Variable locale statique
+    globale_statique++;
+    locale_statique++;
+    printf("Locale statique : %d, Globale statique : %d\n", locale_statique, globale_statique);
+}
+
+int main() {
+    fonction();
+    return 0;
+}
+```
+
+Dans cet exemple, `locale_statique` est une variable statique locale à la fonction `fonction`, tandis que `globale_statique` est une variable globale statique. `globale_statique` est visible dans tout le fichier `exemple.c`, mais pas à l'extérieur de ce fichier.
+
+### Conclusion
+
+L'utilisation de variables statiques en C permet de contrôler la portée et la durée de vie des variables, offrant ainsi une flexibilité supplémentaire dans la gestion des données. Les variables statiques locales conservent leur valeur entre les appels successifs de la fonction, tandis que les variables statiques globales sont limitées à la visibilité dans le fichier où elles sont déclarées. Leur utilisation est utile pour la préservation de l'état dans les fonctions récursives, la mise en œuvre de compteurs et de gestion de ressources partagées dans un fichier.

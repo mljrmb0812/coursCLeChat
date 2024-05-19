@@ -1,0 +1,61 @@
+32111DeclarationEtInitialisationTableaux
+
+### Paragraphe 1 : Déclaration et initialisation des tableaux en C
+
+En langage C, les tableaux sont des structures de données permettant de stocker une collection de valeurs du même type de données sous un seul nom. Les tableaux sont largement utilisés pour stocker des données structurées telles que des nombres, des caractères ou d'autres types de données.
+
+### Déclaration des tableaux
+
+La déclaration d'un tableau en C implique la spécification du type de données des éléments du tableau et la taille du tableau. La syntaxe générale pour déclarer un tableau est la suivante :
+
+```c
+type nom_tableau[taille];
+```
+
+- **type** : Le type de données des éléments du tableau (par exemple, `int`, `float`, `char`).
+- **nom_tableau** : Le nom du tableau, utilisé pour accéder à ses éléments.
+- **taille** : Le nombre d'éléments dans le tableau.
+
+#### Exemples de déclaration de tableaux :
+
+```c
+int entiers[5];          // Déclare un tableau d'entiers de taille 5
+float flottants[10];      // Déclare un tableau de nombres flottants de taille 10
+char caracteres[50];      // Déclare un tableau de caractères de taille 50
+```
+
+### Initialisation des tableaux
+
+Les tableaux peuvent être initialisés lors de leur déclaration ou après leur déclaration en utilisant des accolades `{}` pour entourer les valeurs initiales. Pour initialiser un tableau lors de sa déclaration, la liste des valeurs initiales est placée entre les accolades juste après le nom du tableau. Pour initialiser un tableau après sa déclaration, les valeurs initiales sont attribuées à chaque élément du tableau à l'aide d'indices.
+
+#### Exemples d'initialisation de tableaux :
+
+```c
+int entiers[5] = {1, 2, 3, 4, 5};             // Initialise un tableau d'entiers avec des valeurs
+float flottants[3] = {3.14, 2.5, 1.0};        // Initialise un tableau de nombres flottants avec des valeurs
+char caracteres[4] = {'a', 'b', 'c', 'd'};    // Initialise un tableau de caractères avec des valeurs
+```
+
+Si la taille du tableau n'est pas spécifiée lors de la déclaration, elle peut être omise lors de l'initialisation en utilisant une liste de valeurs initiales entre les accolades. Dans ce cas, le compilateur détermine automatiquement la taille du tableau en fonction du nombre d'éléments dans la liste d'initialisation.
+
+#### Exemple d'initialisation de tableau avec taille implicite :
+
+```c
+int entiers[] = {1, 2, 3, 4, 5};   // Initialise un tableau d'entiers avec des valeurs, la taille est automatiquement déterminée
+```
+
+### Accès aux éléments du tableau
+
+Les éléments d'un tableau sont accessibles à l'aide de leur indice (position) dans le tableau. L'indice du premier élément d'un tableau est 0, et l'indice du dernier élément est taille-1, où taille est la taille du tableau.
+
+#### Exemple d'accès aux éléments du tableau :
+
+```c
+int entiers[5] = {10, 20, 30, 40, 50};
+printf("Premier élément : %d\n", entiers[0]);   // Accès au premier élément
+printf("Dernier élément : %d\n", entiers[4]);   // Accès au dernier élément
+```
+
+### Conclusion
+
+La déclaration et l'initialisation des tableaux en C sont des concepts fondamentaux pour manipuler des données structurées. Les tableaux offrent une méthode efficace de stockage et d'accès à une collection d'éléments du même type. Comprendre la syntaxe et les méthodes d'initialisation des tableaux est crucial pour une programmation efficace en C, en particulier lors de la manipulation de données tabulaires et d'algorithmes nécessitant un accès séquentiel aux données.

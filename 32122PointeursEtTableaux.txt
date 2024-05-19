@@ -1,0 +1,61 @@
+32122PointeursEtTableaux
+
+### Paragraphe 2 : Pointeurs et tableaux
+
+En langage C, les pointeurs et les tableaux sont étroitement liés. Un tableau peut être considéré comme un pointeur vers sa première case mémoire, et l'arithmétique des pointeurs est souvent utilisée pour accéder aux éléments d'un tableau de manière efficace.
+
+### Relation entre les tableaux et les pointeurs
+
+En C, le nom d'un tableau agit comme un pointeur constant vers sa première case mémoire. Cela signifie que le nom du tableau contient l'adresse de sa première case. 
+
+#### Exemple :
+
+```c
+int entiers[5] = {10, 20, 30, 40, 50};
+int *ptr_entiers = entiers; // Le nom 'entiers' est un pointeur constant vers le premier élément du tableau
+```
+
+Dans cet exemple, `entiers` et `ptr_entiers` pointent tous les deux vers la première case mémoire du tableau `entiers`.
+
+### Utilisation des pointeurs pour accéder aux éléments du tableau
+
+L'arithmétique des pointeurs est souvent utilisée pour accéder aux éléments d'un tableau. En utilisant des opérations d'incrémentation ou de décrémentation des pointeurs, il est possible de parcourir séquentiellement les éléments d'un tableau.
+
+#### Exemple :
+
+```c
+int entiers[5] = {10, 20, 30, 40, 50};
+int *ptr_entiers = entiers; // Initialise le pointeur avec l'adresse du premier élément du tableau
+for (int i = 0; i < 5; i++) {
+    printf("Element %d : %d\n", i, *(ptr_entiers + i)); // Accède à l'élément i en utilisant l'arithmétique des pointeurs
+}
+```
+
+Dans cet exemple, `(ptr_entiers + i)` pointe vers l'élément `i` du tableau, et `*(ptr_entiers + i)` accède à la valeur de cet élément.
+
+### Passage de tableaux à des fonctions à l'aide de pointeurs
+
+Lorsqu'un tableau est passé à une fonction en tant que paramètre, en réalité, seul le pointeur vers le premier élément du tableau est passé. Cela permet de manipuler le tableau à l'intérieur de la fonction sans faire de copie des données du tableau.
+
+#### Exemple :
+
+```c
+void afficher_tableau(int *tab, int taille) {
+    for (int i = 0; i < taille; i++) {
+        printf("%d ", *(tab + i)); // Accède à l'élément i du tableau à l'aide de l'arithmétique des pointeurs
+    }
+    printf("\n");
+}
+
+int main() {
+    int entiers[5] = {10, 20, 30, 40, 50};
+    afficher_tableau(entiers, 5); // Passe le tableau 'entiers' à la fonction 'afficher_tableau'
+    return 0;
+}
+```
+
+Dans cet exemple, `entiers` est passé à la fonction `afficher_tableau` en tant que pointeur, permettant à la fonction d'accéder aux éléments du tableau sans copier les données.
+
+### Conclusion
+
+Les pointeurs et les tableaux sont intimement liés en langage C, offrant une flexibilité et une efficacité dans la manipulation des données. Les tableaux peuvent être considérés comme des pointeurs vers leur premier élément, et l'arithmétique des pointeurs est souvent utilisée pour accéder aux éléments d'un tableau de manière séquentielle. Comprendre la relation entre les pointeurs et les tableaux est essentiel pour une programmation efficace en C, en particulier lors de la manipulation de données tabulaires et du passage de tableaux à des fonctions.

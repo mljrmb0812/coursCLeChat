@@ -1,0 +1,74 @@
+32123PointeursDeFonctions
+
+### Paragraphe 3 : Pointeurs de fonctions
+
+En langage C, les pointeurs de fonctions sont des variables qui stockent l'adresse d'une fonction. Ils permettent une flexibilité et une dynamique accrues dans l'appel de fonctions, notamment lors du passage de fonctions en tant que paramètres à d'autres fonctions ou lors de leur stockage dans des structures de données.
+
+### Déclaration des pointeurs de fonctions
+
+La déclaration d'un pointeur de fonction suit la syntaxe générale suivante :
+
+```c
+type_de_retour (*nom_pointeur_de_fonction)(types_des_paramètres);
+```
+
+- **type_de_retour** : Le type de données que la fonction pointée renvoie.
+- **nom_pointeur_de_fonction** : Le nom du pointeur de fonction.
+- **types_des_paramètres** : Les types des paramètres que la fonction pointée prend en entrée.
+
+#### Exemple de déclaration d'un pointeur de fonction :
+
+```c
+int (*ptr_fonction)(int, int); // Déclare un pointeur de fonction prenant deux entiers en entrée et renvoyant un entier
+```
+
+### Utilisation des pointeurs de fonctions
+
+Les pointeurs de fonctions peuvent être utilisés pour appeler la fonction à laquelle ils pointent ou pour stocker des adresses de fonctions dans des structures de données.
+
+#### Exemple d'utilisation d'un pointeur de fonction :
+
+```c
+int addition(int a, int b) {
+    return a + b;
+}
+
+int soustraction(int a, int b) {
+    return a - b;
+}
+
+int main() {
+    int (*ptr_fonction)(int, int); // Déclare un pointeur de fonction
+    ptr_fonction = addition; // Affecte l'adresse de la fonction 'addition' au pointeur de fonction
+    printf("Résultat de l'addition : %d\n", ptr_fonction(10, 5)); // Appelle la fonction via le pointeur
+    ptr_fonction = soustraction; // Affecte l'adresse de la fonction 'soustraction' au pointeur de fonction
+    printf("Résultat de la soustraction : %d\n", ptr_fonction(10, 5)); // Appelle la fonction via le pointeur
+    return 0;
+}
+```
+
+Dans cet exemple, le pointeur de fonction `ptr_fonction` est utilisé pour appeler les fonctions `addition` et `soustraction` en fonction de l'adresse de la fonction à laquelle il pointe.
+
+### Passage de pointeurs de fonctions en tant que paramètres
+
+Les pointeurs de fonctions peuvent être passés en tant que paramètres à d'autres fonctions, ce qui permet une programmation plus flexible et dynamique.
+
+#### Exemple de passage de pointeur de fonction en tant que paramètre :
+
+```c
+int operation(int a, int b, int (*ptr_fonction)(int, int)) {
+    return ptr_fonction(a, b);
+}
+
+int main() {
+    printf("Résultat de l'addition : %d\n", operation(10, 5, addition)); // Appel de la fonction 'operation' avec le pointeur de fonction 'addition'
+    printf("Résultat de la soustraction : %d\n", operation(10, 5, soustraction)); // Appel de la fonction 'operation' avec le pointeur de fonction 'soustraction'
+    return 0;
+}
+```
+
+Dans cet exemple, la fonction `operation` prend un pointeur de fonction en tant que paramètre et l'utilise pour effectuer une opération donnée sur les arguments `a` et `b`.
+
+### Conclusion
+
+Les pointeurs de fonctions offrent une flexibilité et une dynamique accrues dans l'appel de fonctions en langage C. Ils permettent de stocker des adresses de fonctions dans des variables, de les passer en tant que paramètres à d'autres fonctions et de les utiliser pour appeler dynamiquement des fonctions en fonction des besoins du programme. Comprendre la déclaration, l'utilisation et le passage de pointeurs de fonctions est essentiel pour une programmation efficace en C, en particulier lors de la mise en œuvre de structures de données et d'algorithmes nécessitant une flexibilité dans les appels de fonctions.

@@ -1,0 +1,84 @@
+31111syntaxeEtDeclarationDesFonctions
+
+### Titre III : Fonctions et Structures de Données en C
+
+#### Partie 1 : Fonctions
+
+##### Section 1 : Définition et Utilisation des Fonctions
+
+###### Article 1 : Déclaration et Définition des Fonctions
+
+**Paragraphe 1 : Syntaxe de déclaration des fonctions**
+
+En langage C, les fonctions sont des blocs de code réutilisables qui effectuent des tâches spécifiques et peuvent être appelées à partir de différentes parties d'un programme. La déclaration d'une fonction informe le compilateur de son existence et de son prototype, c'est-à-dire son nom, le type de retour et les paramètres qu'elle accepte. La définition de la fonction, quant à elle, contient le code réel qui sera exécuté lorsque la fonction sera appelée.
+
+**Déclaration des fonctions :**
+La déclaration d'une fonction, aussi appelée prototype, se fait en spécifiant le type de retour de la fonction, son nom, et les types de ses paramètres. La syntaxe générale est la suivante :
+
+```c
+type_retour nom_fonction(type_paramètre1 nom_paramètre1, type_paramètre2 nom_paramètre2, ...);
+```
+
+- **type_retour** : Type de la valeur retournée par la fonction (par exemple, `int`, `void`, `float`).
+- **nom_fonction** : Nom de la fonction, utilisé pour l'appeler.
+- **type_paramètre** : Type des paramètres passés à la fonction.
+- **nom_paramètre** : Noms des paramètres (facultatif dans la déclaration, mais utile pour la lisibilité).
+
+Exemple de déclaration d'une fonction qui ajoute deux entiers :
+
+```c
+int ajouter(int a, int b);
+```
+
+**Définition des fonctions :**
+La définition d'une fonction inclut le prototype de la fonction suivi du bloc de code à exécuter. La syntaxe générale est la suivante :
+
+```c
+type_retour nom_fonction(type_paramètre1 nom_paramètre1, type_paramètre2 nom_paramètre2, ...) {
+    // Corps de la fonction : instructions à exécuter
+}
+```
+
+Exemple de définition de la fonction `ajouter` :
+
+```c
+int ajouter(int a, int b) {
+    return a + b;
+}
+```
+
+**Utilisation des fonctions :**
+Une fois qu'une fonction est déclarée (si nécessaire) et définie, elle peut être appelée dans le programme en utilisant son nom et en passant les arguments appropriés. La syntaxe d'appel de la fonction est :
+
+```c
+nom_fonction(arguments);
+```
+
+Exemple d'utilisation de la fonction `ajouter` :
+
+```c
+#include <stdio.h>
+
+// Déclaration de la fonction
+int ajouter(int a, int b);
+
+int main() {
+    int resultat;
+    // Appel de la fonction
+    resultat = ajouter(3, 4);
+    printf("Le résultat est : %d\n", resultat);
+    return 0;
+}
+
+// Définition de la fonction
+int ajouter(int a, int b) {
+    return a + b;
+}
+```
+
+Dans cet exemple :
+- La fonction `ajouter` est déclarée avant `main`, ce qui permet de l'appeler dans `main`.
+- La fonction est définie après `main`, et elle prend deux paramètres `int` et retourne leur somme.
+- La fonction `ajouter` est appelée dans `main` avec les arguments `3` et `4`, et le résultat est affiché.
+
+La déclaration préalable d'une fonction (prototypage) est particulièrement utile dans les programmes complexes où les fonctions peuvent être définies après leur première utilisation, assurant ainsi que le compilateur connaît leur existence lors de la compilation.

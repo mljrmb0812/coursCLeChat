@@ -1,0 +1,64 @@
+32222AccesMembreStructure
+
+### Paragraphe 2 : Accès aux membres de la structure
+
+En langage C, l'accès aux membres d'une structure se fait à l'aide de l'opérateur `.` (point). Cet opérateur permet d'accéder et de manipuler les données stockées dans chaque membre de la structure.
+
+### Syntaxe d'accès aux membres
+
+Pour accéder à un membre spécifique d'une structure, on utilise la syntaxe suivante :
+
+```c
+nom_structure.nom_membre
+```
+
+- **nom_structure** : Le nom de la structure.
+- **nom_membre** : Le nom du membre de la structure auquel on souhaite accéder.
+
+#### Exemple d'accès aux membres d'une structure :
+
+```c
+struct Point {
+    int x;
+    int y;
+};
+
+struct Point p1;
+p1.x = 10;
+p1.y = 20;
+printf("Coordonnées : x = %d, y = %d\n", p1.x, p1.y);
+```
+
+Dans cet exemple, les membres `x` et `y` de la structure `p1` sont accessibles et utilisés pour afficher les coordonnées.
+
+### Manipulation des membres de la structure
+
+Une fois qu'un membre de la structure est accessible, il peut être utilisé comme n'importe quelle autre variable du même type. Cela inclut la lecture de la valeur du membre, l'assignation d'une nouvelle valeur et l'utilisation du membre dans des opérations.
+
+#### Exemple de manipulation des membres d'une structure :
+
+```c
+p1.x = 5;
+p1.y = p1.x * 2;
+printf("Nouvelles coordonnées : x = %d, y = %d\n", p1.x, p1.y);
+```
+
+Dans cet exemple, la valeur du membre `x` est modifiée, et la valeur du membre `y` est calculée en fonction de la nouvelle valeur de `x`.
+
+### Utilisation des pointeurs pour accéder aux membres de la structure
+
+Il est également possible d'accéder aux membres d'une structure à l'aide d'un pointeur vers cette structure. Cela se fait en utilisant l'opérateur `->` (flèche).
+
+#### Exemple d'accès aux membres d'une structure à l'aide de pointeurs :
+
+```c
+struct Point p1 = {3, 4};
+struct Point *ptr_point = &p1;
+printf("Coordonnées : x = %d, y = %d\n", ptr_point->x, ptr_point->y);
+```
+
+Dans cet exemple, `ptr_point->x` et `ptr_point->y` sont utilisés pour accéder aux membres `x` et `y` de la structure pointée par `ptr_point`.
+
+### Conclusion
+
+L'accès aux membres d'une structure en langage C est une opération fondamentale pour manipuler des données structurées. L'utilisation de l'opérateur `.` permet de facilement accéder et manipuler les membres d'une structure. Comprendre comment accéder et manipuler les membres de la structure est essentiel pour une programmation efficace en C, en particulier lors de la manipulation de structures de données complexes et de l'organisation des données.

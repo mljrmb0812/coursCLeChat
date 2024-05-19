@@ -1,0 +1,112 @@
+31112RetourDeValeurEtTypeVoid
+
+**Paragraphe 2 : Retour de valeurs et type `void` en C**
+
+En C, les fonctions peuvent retourner des valeurs à l'aide de l'instruction `return`. Le type de retour d'une fonction spécifie le type de donnée que la fonction renvoie après son exécution. Une fonction peut également ne rien renvoyer, auquel cas son type de retour est `void`.
+
+### Retour de valeurs
+
+Lorsqu'une fonction renvoie une valeur, le type de cette valeur doit être spécifié dans la déclaration et la définition de la fonction. Le mot-clé `return` est utilisé pour retourner une valeur au point d'appel de la fonction. La syntaxe générale pour le retour de valeurs est :
+
+```c
+type_retour nom_fonction(type_paramètre1 nom_paramètre1, type_paramètre2 nom_paramètre2, ...) {
+    // Corps de la fonction
+    return valeur;
+}
+```
+
+Exemple d'une fonction qui calcule le carré d'un nombre et retourne le résultat :
+
+```c
+#include <stdio.h>
+
+int carre(int n) {
+    return n * n;
+}
+
+int main() {
+    int nombre = 5;
+    int resultat = carre(nombre);
+    printf("Le carré de %d est %d\n", nombre, resultat);
+    return 0;
+}
+```
+
+Dans cet exemple, la fonction `carre` :
+- A un type de retour `int`, ce qui signifie qu'elle retourne un entier.
+- Utilise `return n * n;` pour renvoyer le carré du paramètre `n`.
+
+### Type `void`
+
+Le type `void` en C est utilisé pour indiquer qu'une fonction ne retourne aucune valeur. Une fonction de type `void` exécute des opérations mais ne renvoie rien à l'appelant. La syntaxe générale pour une fonction `void` est :
+
+```c
+void nom_fonction(type_paramètre1 nom_paramètre1, type_paramètre2 nom_paramètre2, ...) {
+    // Corps de la fonction
+    // Pas de retour de valeur
+}
+```
+
+Exemple d'une fonction qui affiche un message sans retourner de valeur :
+
+```c
+#include <stdio.h>
+
+void afficherMessage() {
+    printf("Bonjour, ceci est un message.\n");
+}
+
+int main() {
+    afficherMessage();
+    return 0;
+}
+```
+
+Dans cet exemple, la fonction `afficherMessage` :
+- A un type de retour `void`, indiquant qu'elle ne retourne aucune valeur.
+- Exécute simplement l'instruction `printf` pour afficher un message.
+
+### Retourner `void`
+
+Il est également possible d'utiliser le type `void` pour indiquer qu'une fonction ne prend aucun paramètre. Par exemple :
+
+```c
+void saluer() {
+    printf("Salut tout le monde!\n");
+}
+
+int main() {
+    saluer();
+    return 0;
+}
+```
+
+### Fonctions avec plusieurs retours
+
+Certaines fonctions peuvent avoir plusieurs instructions `return`, chacune correspondant à une condition différente :
+
+```c
+#include <stdio.h>
+
+int max(int a, int b) {
+    if (a > b) {
+        return a;
+    } else {
+        return b;
+    }
+}
+
+int main() {
+    int x = 10, y = 20;
+    int maximum = max(x, y);
+    printf("Le maximum est %d\n", maximum);
+    return 0;
+}
+```
+
+Dans cet exemple, la fonction `max` :
+- Retourne soit `a` soit `b` en fonction de la condition `if`.
+
+### Conclusion
+
+En résumé, le retour de valeurs dans les fonctions permet de renvoyer des résultats au point d'appel, facilitant ainsi le passage et la manipulation des données. Le type `void` est utilisé pour les fonctions qui ne retournent aucune valeur, soulignant ainsi leur rôle opérationnel plutôt que leur rôle de transformation de données. Ces concepts sont essentiels pour structurer et organiser le code de manière modulaire et réutilisable en C.

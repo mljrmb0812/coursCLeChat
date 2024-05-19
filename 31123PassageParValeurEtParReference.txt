@@ -1,0 +1,71 @@
+31123PassageParValeurEtParReference
+
+### Paragraphe 3 : Passage par valeur et par référence (pointeurs)
+
+En langage C, les arguments peuvent être passés à une fonction soit par valeur, soit par référence à l'aide de pointeurs. Comprendre la différence entre ces deux méthodes est essentiel pour une manipulation efficace des données et pour éviter les erreurs de programmation.
+
+### Passage par valeur
+
+Lorsque les arguments sont passés à une fonction par valeur, une copie de la valeur de l'argument est passée à la fonction. Cela signifie que toute modification apportée à l'argument à l'intérieur de la fonction n'affecte pas la variable d'origine dans la fonction appelante.
+
+#### Caractéristiques du passage par valeur :
+1. **Copie de la valeur** : La valeur de l'argument est copiée dans une nouvelle variable à l'intérieur de la fonction.
+2. **Indépendance** : Les modifications apportées à la variable locale n'affectent pas la variable d'origine dans la fonction appelante.
+3. **Syntaxe** : Les arguments sont passés directement à la fonction sans utiliser de pointeurs.
+
+#### Exemple :
+
+```c
+#include <stdio.h>
+
+void incrementer(int n) {
+    n = n + 1;
+    printf("Valeur à l'intérieur de la fonction : %d\n", n);
+}
+
+int main() {
+    int nombre = 5;
+    incrementer(nombre);
+    printf("Valeur après l'appel de la fonction : %d\n", nombre);
+    return 0;
+}
+```
+
+Dans cet exemple, `nombre` est passé à la fonction `incrementer` par valeur. Toute modification de `n` à l'intérieur de la fonction n'affecte pas la valeur de `nombre` dans `main`.
+
+### Passage par référence (à l'aide de pointeurs)
+
+Lorsque les arguments sont passés à une fonction par référence, un pointeur vers la variable d'origine est passé à la fonction. Cela permet à la fonction d'accéder directement à la variable d'origine et de modifier sa valeur.
+
+#### Caractéristiques du passage par référence :
+1. **Accès direct** : La fonction peut accéder directement à la variable d'origine via le pointeur.
+2. **Modifications persistantes** : Les modifications apportées à la variable dans la fonction sont persistantes et affectent la variable d'origine.
+3. **Syntaxe** : Les arguments sont passés sous forme de pointeurs à la fonction.
+
+#### Exemple :
+
+```c
+#include <stdio.h>
+
+void incrementer(int *n) {
+    *n = *n + 1;
+    printf("Valeur à l'intérieur de la fonction : %d\n", *n);
+}
+
+int main() {
+    int nombre = 5;
+    incrementer(&nombre);
+    printf("Valeur après l'appel de la fonction : %d\n", nombre);
+    return 0;
+}
+```
+
+Dans cet exemple, `nombre` est passé à la fonction `incrementer` par référence à l'aide d'un pointeur. Les modifications apportées à `*n` à l'intérieur de la fonction affectent directement la valeur de `nombre` dans `main`.
+
+### Choix entre passage par valeur et par référence
+
+Le choix entre le passage par valeur et par référence dépend des besoins spécifiques du programme et de la manière dont les données doivent être manipulées. Le passage par valeur est souvent utilisé lorsque la fonction ne doit pas modifier la valeur de l'argument d'origine, tandis que le passage par référence est utilisé lorsque la fonction doit modifier la valeur de l'argument d'origine ou lorsque les données à passer sont volumineuses pour être copiées.
+
+### Conclusion
+
+Le passage par valeur et par référence sont deux méthodes fondamentales pour transmettre des données à une fonction en langage C. Comprendre la différence entre ces deux méthodes est essentiel pour une manipulation efficace des données et pour éviter les erreurs de programmation liées à la portée et à la manipulation des données. Choisir la méthode appropriée dépend des besoins spécifiques du programme et de la manière dont les données doivent être manipulées dans le contexte de la fonction appelante et de la fonction appelée.

@@ -1,0 +1,77 @@
+32221DeclarationEtDefinitionStructures
+
+### Paragraphe 1 : Déclaration et définition des structures
+
+En langage C, une structure est une collection de variables de types différents regroupées sous un seul nom. Les structures permettent de créer des types de données personnalisés pour organiser et manipuler des données de manière plus organisée et logique.
+
+### Déclaration d'une structure
+
+La déclaration d'une structure se fait en utilisant le mot-clé `struct`, suivi du nom de la structure et de la liste des membres de la structure entre des accolades `{}`.
+
+#### Exemple de déclaration d'une structure :
+
+```c
+struct Point {
+    int x;
+    int y;
+};
+```
+
+Dans cet exemple, une structure nommée `Point` est déclarée avec deux membres `x` et `y` de type entier.
+
+### Définition d'une structure
+
+La définition d'une structure consiste à créer une variable de ce type de structure en utilisant le nom de la structure suivi du nom de la variable.
+
+#### Exemple de définition d'une variable de structure :
+
+```c
+struct Point p1;
+```
+
+Dans cet exemple, `p1` est une variable de type `Point`, déclarée à partir de la structure `Point`.
+
+### Accès aux membres d'une structure
+
+Les membres d'une structure sont accessibles à l'aide de l'opérateur `.` (point).
+
+#### Exemple d'accès aux membres d'une structure :
+
+```c
+p1.x = 10;
+p1.y = 20;
+printf("Coordonnées : x = %d, y = %d\n", p1.x, p1.y);
+```
+
+Dans cet exemple, les membres `x` et `y` de la structure `p1` sont accessibles et modifiables.
+
+### Initialisation des structures
+
+Les structures peuvent être initialisées lors de leur définition ou après leur définition en utilisant une liste de valeurs entre des accolades `{}`.
+
+#### Exemple d'initialisation d'une structure :
+
+```c
+struct Point p2 = {5, 15};
+```
+
+Dans cet exemple, la structure `p2` est initialisée avec les valeurs 5 pour `x` et 15 pour `y`.
+
+### Structures imbriquées
+
+Les structures peuvent être imbriquées les unes dans les autres pour former des structures plus complexes.
+
+#### Exemple de structure imbriquée :
+
+```c
+struct Rectangle {
+    struct Point coin_superieur_gauche;
+    struct Point coin_inferieur_droit;
+};
+```
+
+Dans cet exemple, la structure `Rectangle` contient deux membres qui sont eux-mêmes des structures de type `Point`.
+
+### Conclusion
+
+La déclaration et la définition des structures en langage C permettent de créer des types de données personnalisés pour organiser et manipuler des données de manière structurée. Les structures offrent une manière puissante d'organiser les données en regroupant des variables de types différents sous un même nom. Comprendre la syntaxe et l'utilisation des structures est fondamental pour une programmation efficace en C, en particulier lors de la manipulation de données complexes et de la définition de structures de données personnalisées.

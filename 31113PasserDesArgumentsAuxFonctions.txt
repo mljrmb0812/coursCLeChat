@@ -1,0 +1,118 @@
+31113PasserDesArgumentsAuxFonctions
+
+**Paragraphe 3 : Passer des arguments aux fonctions**
+
+En C, les fonctions peuvent recevoir des données d'entrée via des arguments, également appelés paramètres. Ces arguments permettent aux fonctions de travailler sur des données spécifiques et de produire des résultats basés sur ces données. La manière dont les arguments sont passés aux fonctions a un impact sur la façon dont les fonctions manipulent ces données.
+
+### Passer des arguments par valeur
+
+La méthode la plus courante pour passer des arguments aux fonctions en C est par valeur. Lorsqu'un argument est passé par valeur, une copie de la valeur de l'argument est faite. La fonction reçoit cette copie et toute modification apportée à l'argument à l'intérieur de la fonction n'affecte pas la variable d'origine.
+
+La syntaxe générale pour passer des arguments par valeur est :
+
+```c
+type_retour nom_fonction(type_paramètre1 nom_paramètre1, type_paramètre2 nom_paramètre2, ...) {
+    // Corps de la fonction
+}
+```
+
+Exemple :
+
+```c
+#include <stdio.h>
+
+void incrementer(int n) {
+    n = n + 1;
+    printf("Valeur à l'intérieur de la fonction : %d\n", n);
+}
+
+int main() {
+    int nombre = 5;
+    incrementer(nombre);
+    printf("Valeur après l'appel de la fonction : %d\n", nombre);
+    return 0;
+}
+```
+
+Dans cet exemple :
+- La fonction `incrementer` prend un entier `n` en paramètre.
+- À l'intérieur de la fonction, `n` est incrémenté de 1.
+- La valeur de `nombre` dans la fonction `main` reste inchangée, car `n` est une copie de `nombre`.
+
+### Passer des arguments par référence
+
+Pour permettre à une fonction de modifier les valeurs des variables d'origine, les arguments peuvent être passés par référence. En C, cela se fait en passant les adresses des variables à l'aide de pointeurs. Lorsqu'une adresse est passée, la fonction reçoit un pointeur vers l'argument et peut ainsi modifier la valeur réelle de la variable.
+
+La syntaxe générale pour passer des arguments par référence est :
+
+```c
+type_retour nom_fonction(type_paramètre1 *nom_paramètre1, type_paramètre2 *nom_paramètre2, ...) {
+    // Corps de la fonction
+}
+```
+
+Exemple :
+
+```c
+#include <stdio.h>
+
+void incrementer(int *n) {
+    *n = *n + 1;
+    printf("Valeur à l'intérieur de la fonction : %d\n", *n);
+}
+
+int main() {
+    int nombre = 5;
+    incrementer(&nombre);
+    printf("Valeur après l'appel de la fonction : %d\n", nombre);
+    return 0;
+}
+```
+
+Dans cet exemple :
+- La fonction `incrementer` prend un pointeur `int *n` en paramètre.
+- À l'intérieur de la fonction, la valeur pointée par `n` est incrémentée de 1.
+- La valeur de `nombre` dans la fonction `main` est modifiée, car la fonction a accédé directement à la variable d'origine via son adresse.
+
+### Passer des tableaux en argument
+
+En C, les tableaux sont passés par référence par défaut. Lorsque vous passez un tableau à une fonction, ce n'est pas une copie du tableau qui est passée, mais l'adresse du premier élément du tableau. Cela permet à la fonction de modifier les éléments du tableau.
+
+Exemple :
+
+```c
+#include <stdio.h>
+
+void afficherTableau(int arr[], int taille) {
+    for (int i = 0; i < taille; i++) {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+}
+
+void incrementerTableau(int arr[], int taille) {
+    for (int i = 0; i < taille; i++) {
+        arr[i] = arr[i] + 1;
+    }
+}
+
+int main() {
+    int tableau[] = {1, 2, 3, 4, 5};
+    int taille = sizeof(tableau) / sizeof(tableau[0]);
+    
+    afficherTableau(tableau, taille);
+    incrementerTableau(tableau, taille);
+    afficherTableau(tableau, taille);
+    
+    return 0;
+}
+```
+
+Dans cet exemple :
+- La fonction `afficherTableau` prend un tableau `arr` et sa taille en paramètres et affiche les éléments du tableau.
+- La fonction `incrementerTableau` incrémente chaque élément du tableau.
+- Les modifications apportées par `incrementerTableau` sont visibles dans `main` car le tableau est passé par référence.
+
+### Conclusion
+
+Passer des arguments aux fonctions en C permet de transmettre des données et de contrôler leur traitement à l'intérieur des fonctions. Les arguments peuvent être passés par valeur, ce qui implique la création de copies, ou par référence, en utilisant des pointeurs, permettant ainsi aux fonctions de modifier les variables d'origine. Comprendre ces mécanismes est crucial pour une gestion efficace de la mémoire et du comportement des programmes en C.
