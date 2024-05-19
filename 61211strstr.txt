@@ -1,0 +1,42 @@
+61211strstr
+
+### Section 2 : Opérations avancées sur les chaînes de caractères
+
+#### Article 1 : Recherche de sous-chaînes avec `strstr`
+
+La recherche de sous-chaînes dans une chaîne de caractères est une opération fréquente dans le traitement de texte. La fonction `strstr` permet de rechercher la première occurrence d'une sous-chaîne dans une chaîne principale.
+
+#### Paragraphe 1 : Utilisation de `strstr` pour rechercher une sous-chaîne
+
+La fonction `strstr` prend deux arguments : la chaîne principale dans laquelle effectuer la recherche et la sous-chaîne à rechercher. Elle renvoie un pointeur vers le début de la première occurrence de la sous-chaîne dans la chaîne principale, ou NULL si la sous-chaîne n'est pas trouvée.
+
+Syntaxe de la fonction `strstr` :
+```c
+char *strstr(const char *haystack, const char *needle);
+```
+
+- `haystack` : Chaîne de caractères dans laquelle rechercher la sous-chaîne.
+- `needle` : Sous-chaîne à rechercher.
+
+Exemple d'utilisation de `strstr` :
+```c
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    char chaine[] = "Bonjour le monde!";
+    char sous_chaine[] = "le";
+    
+    char *resultat = strstr(chaine, sous_chaine);
+    
+    if (resultat != NULL) {
+        printf("Sous-chaîne trouvée à l'index %ld\n", resultat - chaine);
+    } else {
+        printf("Sous-chaîne non trouvée\n");
+    }
+    
+    return 0;
+}
+```
+
+Dans cet exemple, la fonction `strstr` est utilisée pour rechercher la sous-chaîne "le" dans la chaîne principale "Bonjour le monde!". Si la sous-chaîne est trouvée, un message affichant l'index de son début est imprimé à l'écran. Sinon, un message indiquant que la sous-chaîne n'a pas été trouvée est affiché.

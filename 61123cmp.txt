@@ -1,0 +1,76 @@
+61123cmp
+
+### Article 2 : Manipulation des chaînes de caractères
+
+La comparaison de chaînes de caractères est une opération fréquemment utilisée en programmation pour déterminer l'égalité ou l'ordre entre deux chaînes. Les fonctions `strcmp` et `strncmp` sont utilisées pour comparer des chaînes de caractères en langage C.
+
+#### Paragraphe 3 : Comparaison de chaînes avec `strcmp` et `strncmp`
+
+- La fonction `strcmp` (string compare) compare deux chaînes de caractères. Elle retourne un entier négatif si la première chaîne est inférieure à la deuxième, zéro si les deux chaînes sont égales, ou un entier positif si la première chaîne est supérieure à la deuxième. La comparaison se fait caractère par caractère jusqu'à ce qu'une différence soit trouvée ou que les deux chaînes soient terminées.
+
+Syntaxe de la fonction `strcmp` :
+```c
+int strcmp(const char *s1, const char *s2);
+```
+
+- `s1` : Première chaîne de caractères à comparer.
+- `s2` : Deuxième chaîne de caractères à comparer.
+
+Exemple d'utilisation de `strcmp` :
+```c
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    char chaine1[] = "abc";
+    char chaine2[] = "def";
+    
+    int resultat = strcmp(chaine1, chaine2);
+    
+    if (resultat < 0) {
+        printf("chaine1 est inférieure à chaine2\n");
+    } else if (resultat > 0) {
+        printf("chaine1 est supérieure à chaine2\n");
+    } else {
+        printf("chaine1 est égale à chaine2\n");
+    }
+    
+    return 0;
+}
+```
+
+- La fonction `strncmp` est similaire à `strcmp`, mais elle permet de spécifier le nombre maximal de caractères à comparer. Cela peut être utile pour éviter de comparer au-delà de la longueur des chaînes, ce qui pourrait provoquer un comportement indésirable.
+
+Syntaxe de la fonction `strncmp` :
+```c
+int strncmp(const char *s1, const char *s2, size_t n);
+```
+
+- `s1` : Première chaîne de caractères à comparer.
+- `s2` : Deuxième chaîne de caractères à comparer.
+- `n` : Nombre maximal de caractères à comparer.
+
+Exemple d'utilisation de `strncmp` :
+```c
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    char chaine1[] = "abc";
+    char chaine2[] = "abcd";
+    
+    int resultat = strncmp(chaine1, chaine2, 3);
+    
+    if (resultat < 0) {
+        printf("chaine1 est inférieure à chaine2\n");
+    } else if (resultat > 0) {
+        printf("chaine1 est supérieure à chaine2\n");
+    } else {
+        printf("chaine1 est égale à chaine2\n");
+    }
+    
+    return 0;
+}
+```
+
+Dans cet exemple, seuls les trois premiers caractères des deux chaînes sont comparés.

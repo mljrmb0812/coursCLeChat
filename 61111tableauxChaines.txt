@@ -1,0 +1,43 @@
+61111tableauxChaines
+
+### Titre VI : Manipulation des Chaînes de Caractères
+
+La manipulation des chaînes de caractères est un élément crucial de la programmation en langage C, souvent utilisée dans de nombreux programmes pour le traitement des données textuelles. Cette section se concentrera sur les concepts de base et les opérations fondamentales liées aux chaînes de caractères.
+
+**Partie 1 : Fonctions de la bibliothèque string.h**
+
+**Section 1 : Introduction aux chaînes de caractères**
+
+**Article 1 : Déclaration et initialisation de chaînes de caractères**
+
+Les chaînes de caractères en langage C sont généralement représentées à l'aide de tableaux de caractères. Un tableau de caractères est une séquence de caractères terminée par un caractère nul ('\0') qui indique la fin de la chaîne.
+
+Exemple de déclaration et d'initialisation d'une chaîne de caractères :
+
+```c
+char ma_chaine[] = "Bonjour";
+```
+
+Dans cet exemple :
+- `ma_chaine` est un tableau de caractères.
+- Les caractères de la chaîne "Bonjour" sont stockés dans ce tableau.
+- Le caractère nul '\0' est automatiquement ajouté à la fin de la chaîne par le compilateur.
+
+Les chaînes de caractères peuvent également être initialisées en spécifiant explicitement la taille du tableau :
+
+```c
+char ma_chaine[20] = "Bonjour";
+```
+
+Dans ce cas, le tableau `ma_chaine` a une taille de 20 caractères, mais seuls les premiers caractères sont utilisés pour stocker la chaîne "Bonjour". Le reste des emplacements mémoire est rempli avec des caractères nuls ('\0').
+
+La déclaration et l'initialisation peuvent également être séparées :
+
+```c
+char ma_chaine[20];
+strcpy(ma_chaine, "Bonjour");
+```
+
+La fonction `strcpy` (de la bibliothèque `<string.h>`) est utilisée pour copier la chaîne "Bonjour" dans le tableau `ma_chaine`.
+
+Les tableaux de caractères peuvent être manipulés de différentes manières pour effectuer des opérations sur les chaînes de caractères, telles que la concaténation, la comparaison, ou la recherche de sous-chaînes. Ces opérations seront couvertes dans les articles suivants de cette section.

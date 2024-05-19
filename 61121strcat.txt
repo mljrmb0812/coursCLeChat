@@ -1,0 +1,38 @@
+61121strcat
+
+### Article 2 : Manipulation des chaînes de caractères
+
+La manipulation des chaînes de caractères en langage C est une opération courante dans de nombreux programmes. Dans ce contexte, la concaténation de chaînes est une opération importante qui permet de combiner deux chaînes de caractères en une seule.
+
+#### Paragraphe 1 : Concaténation de chaînes avec `strcat`
+
+La fonction `strcat` est utilisée pour concaténer (ou fusionner) deux chaînes de caractères. Elle prend deux arguments : la première chaîne, qui sera modifiée pour inclure la deuxième chaîne à la fin, et la deuxième chaîne à ajouter. La concaténation est effectuée en ajoutant la deuxième chaîne à la fin de la première, suivie du caractère nul de fin de chaîne (`'\0'`).
+
+Syntaxe de la fonction `strcat` :
+```c
+char *strcat(char *dest, const char *src);
+```
+
+- `dest` : Chaîne de caractères de destination où la concaténation aura lieu.
+- `src` : Chaîne de caractères source à ajouter à la fin de la chaîne de destination.
+
+La fonction `strcat` ajoute la chaîne source à la fin de la chaîne de destination. Elle ne vérifie pas si la chaîne de destination a une taille suffisante pour accueillir la chaîne source. Il est donc important de s'assurer que la chaîne de destination a une taille suffisante pour contenir les deux chaînes.
+
+Exemple d'utilisation de `strcat` :
+```c
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    char chaine1[20] = "Bonjour ";
+    char chaine2[] = "le monde!";
+    
+    strcat(chaine1, chaine2);
+    
+    printf("Chaîne concaténée : %s\n", chaine1);
+    
+    return 0;
+}
+```
+
+Dans cet exemple, la chaîne "Bonjour " est concaténée avec la chaîne "le monde!", et le résultat est stocké dans la chaîne `chaine1`. Après l'exécution de `strcat`, `chaine1` contiendra la chaîne complète "Bonjour le monde!".

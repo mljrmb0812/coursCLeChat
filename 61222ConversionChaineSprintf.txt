@@ -1,0 +1,32 @@
+61222ConversionChaineSprintf
+
+#### Paragraphe 2 : Conversion de nombres en chaînes avec `sprintf`
+
+La fonction `sprintf` permet de formater et de stocker une séquence de caractères dans une chaîne de caractères, tout comme `printf` le fait pour l'affichage à la console. Cependant, `sprintf` stocke les caractères dans une chaîne de caractères plutôt que de les afficher à la console. Cette fonction est souvent utilisée pour convertir des nombres en chaînes de caractères.
+
+Syntaxe de la fonction `sprintf` :
+```c
+int sprintf(char *str, const char *format, ...);
+```
+
+- `str` : Pointeur vers la chaîne de caractères dans laquelle stocker les données.
+- `format` : Chaîne de format spécifiant comment les données doivent être formatées.
+
+Exemple d'utilisation de `sprintf` pour convertir un nombre en chaîne de caractères :
+```c
+#include <stdio.h>
+#include <stdlib.h>
+
+int main() {
+    int nombre = 12345;
+    char chaine[20]; // Taille suffisamment grande pour stocker le nombre converti
+    
+    sprintf(chaine, "%d", nombre);
+    
+    printf("La chaîne convertie est : %s\n", chaine);
+    
+    return 0;
+}
+```
+
+Dans cet exemple, la valeur entière `nombre` est convertie en une chaîne de caractères à l'aide de `sprintf`, en spécifiant le format `%d` pour indiquer qu'il s'agit d'un entier. La chaîne résultante est stockée dans le tableau de caractères `chaine` et est ensuite affichée à l'écran.

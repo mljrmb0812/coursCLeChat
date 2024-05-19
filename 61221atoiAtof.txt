@@ -1,0 +1,57 @@
+61221atoiAtof
+
+### Article 2 : Fonctions de conversion de chaînes
+
+#### Paragraphe 1 : Conversion de chaînes en nombres avec `atoi` et `atof`
+
+La conversion de chaînes en nombres est une opération courante en programmation. Les fonctions `atoi` (ASCII to Integer) et `atof` (ASCII to Float) permettent de convertir des chaînes de caractères représentant des nombres en entiers ou en nombres à virgule flottante, respectivement.
+
+- La fonction `atoi` convertit une chaîne de caractères en un entier (int). Elle ignore les espaces en début de chaîne et s'arrête dès qu'elle rencontre un caractère non numérique.
+
+Syntaxe de la fonction `atoi` :
+```c
+int atoi(const char *str);
+```
+
+- `str` : Chaîne de caractères à convertir en entier.
+
+Exemple d'utilisation de `atoi` :
+```c
+#include <stdio.h>
+#include <stdlib.h>
+
+int main() {
+    char chaine[] = "12345";
+    int nombre = atoi(chaine);
+    
+    printf("Le nombre converti est : %d\n", nombre);
+    
+    return 0;
+}
+```
+
+- La fonction `atof` convertit une chaîne de caractères en un nombre à virgule flottante (float).
+
+Syntaxe de la fonction `atof` :
+```c
+double atof(const char *str);
+```
+
+- `str` : Chaîne de caractères à convertir en nombre à virgule flottante.
+
+Exemple d'utilisation de `atof` :
+```c
+#include <stdio.h>
+#include <stdlib.h>
+
+int main() {
+    char chaine[] = "3.14";
+    double nombre = atof(chaine);
+    
+    printf("Le nombre à virgule flottante converti est : %f\n", nombre);
+    
+    return 0;
+}
+```
+
+Dans ces exemples, les chaînes "12345" et "3.14" sont converties en entier et en nombre à virgule flottante respectivement à l'aide des fonctions `atoi` et `atof`.

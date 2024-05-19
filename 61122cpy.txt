@@ -1,0 +1,64 @@
+61122cpy
+
+### Article 2 : Manipulation des chaînes de caractères
+
+La manipulation des chaînes de caractères en langage C implique également la copie de chaînes, souvent nécessaire pour effectuer des opérations sur les données textuelles. Les fonctions `strcpy` et `strncpy` sont utilisées pour copier des chaînes de caractères d'une source vers une destination.
+
+#### Paragraphe 2 : Copie de chaînes avec `strcpy` et `strncpy`
+
+- La fonction `strcpy` (copy string) copie une chaîne de caractères source dans une chaîne de destination. Elle prend deux arguments : la chaîne de destination et la chaîne source. La copie se poursuit jusqu'à ce qu'un caractère nul (`'\0'`) soit rencontré dans la chaîne source.
+
+Syntaxe de la fonction `strcpy` :
+```c
+char *strcpy(char *dest, const char *src);
+```
+
+- `dest` : Chaîne de caractères de destination où la copie aura lieu.
+- `src` : Chaîne de caractères source à copier.
+
+Exemple d'utilisation de `strcpy` :
+```c
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    char source[] = "Hello";
+    char destination[20];
+    
+    strcpy(destination, source);
+    
+    printf("Destination : %s\n", destination);
+    
+    return 0;
+}
+```
+
+- La fonction `strncpy` (copy n characters) est similaire à `strcpy`, mais elle permet de spécifier le nombre maximum de caractères à copier. Cela peut être utile pour éviter un dépassement de mémoire dans la chaîne de destination.
+
+Syntaxe de la fonction `strncpy` :
+```c
+char *strncpy(char *dest, const char *src, size_t n);
+```
+
+- `dest` : Chaîne de caractères de destination où la copie aura lieu.
+- `src` : Chaîne de caractères source à copier.
+- `n` : Nombre maximal de caractères à copier.
+
+Exemple d'utilisation de `strncpy` :
+```c
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    char source[] = "Hello";
+    char destination[20];
+    
+    strncpy(destination, source, sizeof(destination));
+    
+    printf("Destination : %s\n", destination);
+    
+    return 0;
+}
+```
+
+Dans cet exemple, `strncpy` copie au maximum `sizeof(destination)` caractères de la chaîne source dans la chaîne de destination. Cela garantit que la copie ne dépasse pas la taille de la chaîne de destination.

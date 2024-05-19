@@ -1,0 +1,39 @@
+61212strtok
+
+### Section 2 : Opérations avancées sur les chaînes de caractères
+
+#### Article 1 : Recherche de sous-chaînes avec `strstr`
+
+##### Paragraphe 2 : Utilisation de `strtok` pour diviser une chaîne en jetons
+
+La fonction `strtok` est utilisée pour diviser une chaîne de caractères en jetons (ou tokens) en utilisant un délimiteur spécifié. Cela permet de séparer une chaîne en parties plus petites, ce qui est utile pour l'analyse syntaxique et le traitement de texte.
+
+Syntaxe de la fonction `strtok` :
+```c
+char *strtok(char *str, const char *delim);
+```
+
+- `str` : Chaîne de caractères à diviser en jetons. La première fois que `strtok` est appelée, cette chaîne est passée en argument. Par la suite, `strtok` utilise une mémoire statique interne pour conserver l'emplacement de la prochaine portion de la chaîne à traiter.
+- `delim` : Chaîne de caractères contenant les délimiteurs utilisés pour séparer les jetons.
+
+Exemple d'utilisation de `strtok` :
+```c
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    char chaine[] = "Hello,world,this,is,a,test";
+    const char delim[] = ",";
+    
+    char *token = strtok(chaine, delim);
+    
+    while (token != NULL) {
+        printf("%s\n", token);
+        token = strtok(NULL, delim);
+    }
+    
+    return 0;
+}
+```
+
+Dans cet exemple, la chaîne "Hello,world,this,is,a,test" est divisée en jetons à chaque virgule. Chaque jeton est imprimé à l'écran à l'aide d'une boucle while jusqu'à ce qu'aucun jeton ne soit plus disponible.
