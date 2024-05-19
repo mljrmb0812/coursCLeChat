@@ -1,0 +1,139 @@
+51113include
+
+### Titre V : Programmation Avancée
+#### Partie 1 : Concepts Avancés
+#### Section 1 : Préprocesseur C
+##### Article 1 : Macros et Directives
+###### Paragraphe 3 : Utilisation de `#include` pour les fichiers d'en-tête
+
+La directive `#include` en C permet d'incorporer le contenu d'un fichier externe directement dans un fichier source ou un autre fichier d'en-tête. Cette technique est essentielle pour la modularité et la réutilisabilité du code, en facilitant la séparation du code en différentes unités logiques et en partageant des définitions et des déclarations entre plusieurs fichiers.
+
+**1. Syntaxe de `#include`**
+
+Il existe deux formes principales de la directive `#include` :
+
+```c
+#include <nom_fichier>
+#include "nom_fichier"
+```
+
+- `#include <nom_fichier>` : Utilisée principalement pour inclure les fichiers d'en-tête standard du système ou des bibliothèques.
+- `#include "nom_fichier"` : Utilisée principalement pour inclure les fichiers d'en-tête locaux du projet.
+
+**2. Inclusion de fichiers d'en-tête standard**
+
+Les fichiers d'en-tête standard contiennent des déclarations pour les fonctions de la bibliothèque standard du C. Par exemple :
+
+```c
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+```
+
+Ces directives incluent les fichiers `stdio.h`, `stdlib.h`, et `string.h`, qui contiennent des déclarations pour des fonctions de gestion d'entrées/sorties, d'allocation de mémoire, et de manipulation de chaînes de caractères, respectivement.
+
+**3. Inclusion de fichiers d'en-tête locaux**
+
+Pour inclure des fichiers d'en-tête définis par l'utilisateur, on utilise généralement des guillemets. Par exemple :
+
+```c
+#include "mon_fichier.h"
+#include "config.h"
+```
+
+Cela inclut les fichiers `mon_fichier.h` et `config.h` qui sont situés dans le répertoire courant ou dans un chemin spécifié par les options du compilateur.
+
+**4. Exemple de fichier d'en-tête**
+
+Un fichier d'en-tête typique peut contenir des définitions de macros, des déclarations de fonctions, et des définitions de types. Voici un exemple simple :
+
+```c
+// calculs.h
+#ifndef CALCULS_H
+#define CALCULS_H
+
+#define PI 3.14159
+
+double aire_cercle(double rayon);
+int addition(int a, int b);
+
+#endif // CALCULS_H
+```
+
+Dans cet exemple, `calculs.h` définit une macro `PI` et déclare deux fonctions `aire_cercle` et `addition`. L'utilisation de gardes d'inclusion (`#ifndef`, `#define`, `#endif`) permet d'éviter les inclusions multiples.
+
+**5. Utilisation du fichier d'en-tête dans un fichier source**
+
+Le fichier d'en-tête `calculs.h` peut ensuite être inclus dans un fichier source :
+
+```c
+// main.c
+#include <stdio.h>
+#include "calculs.h"
+
+double aire_cercle(double rayon) {
+    return PI * rayon * rayon;
+}
+
+int addition(int a, int b) {
+    return a + b;
+}
+
+int main() {
+    double rayon = 5.0;
+    printf("L'aire du cercle de rayon %.2f est %.2f\n", rayon, aire_cercle(rayon));
+    printf("L'addition de 3 et 4 est %d\n", addition(3, 4));
+    return 0;
+}
+```
+
+Dans cet exemple, `main.c` inclut `calculs.h`, ce qui permet d'utiliser les déclarations de `aire_cercle` et `addition`. Les définitions des fonctions sont également fournies dans le fichier source.
+
+**6. Gardes d'inclusion pour éviter les inclusions multiples**
+
+Comme mentionné précédemment, l'utilisation de gardes d'inclusion empêche les problèmes liés aux inclusions multiples du même fichier d'en-tête :
+
+```c
+// mon_fichier.h
+#ifndef MON_FICHIER_H
+#define MON_FICHIER_H
+
+// Contenu du fichier d'en-tête
+
+#endif // MON_FICHIER_H
+```
+
+Ces gardes garantissent que le contenu de `mon_fichier.h` est inclus une seule fois, même si le fichier est inclus plusieurs fois dans différents fichiers sources ou d'en-tête.
+
+**7. Inclusion conditionnelle**
+
+Parfois, vous pouvez souhaiter inclure un fichier d'en-tête uniquement si certaines conditions sont remplies :
+
+```c
+#ifdef UTILISER_FICHIER_OPTIONNEL
+#include "optionnel.h"
+#endif
+```
+
+Dans cet exemple, `optionnel.h` est inclus seulement si `UTILISER_FICHIER_OPTIONNEL` est défini.
+
+**8. Inclusion de fichiers d'en-tête imbriqués**
+
+Il est courant pour un fichier d'en-tête d'inclure d'autres fichiers d'en-tête. Cela permet de structurer le code de manière modulaire et de réutiliser les définitions communes :
+
+```c
+// réseau.h
+#ifndef RESEAU_H
+#define RESEAU_H
+
+#include "adresse.h"
+#include "connexion.h"
+
+// Déclarations liées au réseau
+
+#endif // RESEAU_H
+```
+
+Dans cet exemple, `réseau.h` inclut `adresse.h` et `connexion.h`, consolidant les définitions nécessaires pour la gestion du réseau.
+
+L'utilisation de `#include` pour les fichiers d'en-tête est une pratique essentielle en C pour organiser le code de manière modulaire, promouvoir la réutilisation du code et gérer les dépendances entre différentes parties du projet.

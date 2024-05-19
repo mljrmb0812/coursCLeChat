@@ -1,0 +1,35 @@
+52112SeparationCodeEnFichierDImplementation
+
+#### Paragraphe 2 : Séparation du code en fichiers d'implémentation (.c)
+
+Une fois que les déclarations ont été spécifiées dans le fichier d'en-tête (.h), la logique de chaque fonction peut être implémentée dans un fichier d'implémentation (.c) correspondant. Cette séparation permet de mieux organiser le code et facilite sa gestion, en isolant les détails de l'implémentation des interfaces publiques. Voici comment cela se fait typiquement :
+
+**1. Inclure le fichier d'en-tête**
+
+Dans le fichier d'implémentation, commencez par inclure le fichier d'en-tête correspondant pour avoir accès aux déclarations des fonctions et des structures.
+
+```c
+#include "mon_fichier.h"
+```
+
+**2. Implémenter les fonctions**
+
+Définissez le corps des fonctions déclarées dans le fichier d'en-tête. Assurez-vous de respecter les signatures de fonction définies dans le fichier d'en-tête.
+
+```c
+void ma_fonction(int arg) {
+    // Implémentation de la fonction
+}
+```
+
+**3. Compilation**
+
+Lorsque vous compilez votre programme, assurez-vous d'inclure à la fois les fichiers d'implémentation et les fichiers d'en-tête. Par exemple, si vous avez un fichier `main.c` qui utilise les fonctionnalités définies dans `mon_fichier.c`, vous pouvez les compiler ensemble comme suit :
+
+```
+gcc main.c mon_fichier.c -o mon_programme
+```
+
+En respectant cette structure, chaque fichier source (.c) contiendra l'implémentation détaillée des fonctions correspondantes, tandis que le fichier d'en-tête (.h) fournira une interface claire et bien définie pour utiliser ces fonctionnalités dans d'autres parties du programme.
+
+La séparation du code en fichiers d'implémentation (.c) offre plusieurs avantages, notamment une meilleure organisation du code, une réutilisabilité accrue des fonctions, et une isolation des détails de l'implémentation. Cela rend le code plus modulaire, plus facile à comprendre et à entretenir, ce qui est essentiel pour le développement de logiciels robustes et évolutifs.

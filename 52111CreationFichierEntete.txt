@@ -1,0 +1,58 @@
+52111CreationFichierEntete
+
+### Partie 2 : Programmation Modulaire
+#### Section 1 : Organisation du Code
+##### Article 1 : Fichiers d'En-tête et d'Implémentation
+
+###### Paragraphe 1 : Création de fichiers d'en-tête (.h)
+
+Les fichiers d'en-tête (.h) sont des éléments essentiels de la programmation modulaire en C. Ils servent de pont entre différentes parties du code en définissant les interfaces publiques des fonctions, des structures de données et des macros. La création d'un fichier d'en-tête suit généralement quelques étapes clés :
+
+**1. Définition des Gardes d'Inclusion**
+
+Pour éviter les inclusions multiples d'un même fichier d'en-tête, des gardes d'inclusion sont utilisées. Ces directives conditionnelles `#ifndef`, `#define` et `#endif` assurent que le contenu du fichier d'en-tête n'est inclus qu'une seule fois lors de la compilation.
+
+```c
+#ifndef MON_FICHIER_H
+#define MON_FICHIER_H
+
+// Contenu du fichier d'en-tête
+
+#endif // MON_FICHIER_H
+```
+
+**2. Déclarations des Fonctions et des Structures**
+
+Les fichiers d'en-tête déclarent les fonctions et les structures de données qui seront utilisées dans d'autres parties du programme. Cela se fait généralement en spécifiant le type de retour des fonctions ainsi que les types et noms des arguments.
+
+```c
+#ifndef MON_FICHIER_H
+#define MON_FICHIER_H
+
+// Déclaration d'une fonction
+void ma_fonction(int arg);
+
+// Déclaration d'une structure
+struct MaStructure {
+    int champ1;
+    double champ2;
+};
+
+#endif // MON_FICHIER_H
+```
+
+**3. Déclarations de Macros**
+
+Les macros sont également souvent définies dans les fichiers d'en-tête pour fournir des constantes symboliques ou des instructions de préprocesseur réutilisables.
+
+```c
+#ifndef MON_FICHIER_H
+#define MON_FICHIER_H
+
+// Déclaration de macro
+#define TAILLE_MAX 100
+
+#endif // MON_FICHIER_H
+```
+
+En suivant ces étapes, un fichier d'en-tête bien conçu fournit une interface claire et précise pour les fonctionnalités offertes par un module ou une bibliothèque en C. Cela facilite la réutilisation du code, la collaboration entre plusieurs développeurs et la maintenance du projet dans son ensemble.

@@ -1,0 +1,113 @@
+51111Define
+
+### Titre V : Programmation Avancée
+#### Partie 1 : Concepts Avancés
+#### Section 1 : Préprocesseur C
+##### Article 1 : Macros et Directives
+###### Paragraphe 1 : Définition de macros avec `#define`
+
+Les macros en C sont des outils puissants fournis par le préprocesseur pour faciliter la programmation en remplaçant des segments de code répétitifs par des identificateurs définis par l'utilisateur. Elles sont définies en utilisant la directive `#define`.
+
+**1. Syntaxe de `#define`**
+
+```c
+#define NOM_MACRO remplacement
+```
+
+- `NOM_MACRO` : le nom de la macro. Par convention, les noms de macros sont souvent écrits en majuscules pour les distinguer des variables.
+- `remplacement` : le code ou la valeur qui remplacera chaque occurrence de `NOM_MACRO` dans le code source avant la compilation.
+
+**2. Exemple simple de définition de macros**
+
+```c
+#include <stdio.h>
+
+#define PI 3.14159
+#define CERCLE_AREA(r) (PI * (r) * (r))
+
+int main() {
+    double rayon = 5.0;
+    double area = CERCLE_AREA(rayon);
+    printf("L'aire du cercle de rayon %.2f est %.2f\n", rayon, area);
+    return 0;
+}
+```
+
+Dans cet exemple :
+- `#define PI 3.14159` définit une constante nommée `PI`.
+- `#define CERCLE_AREA(r) (PI * (r) * (r))` définit une macro fonctionnelle pour calculer l'aire d'un cercle en fonction de son rayon `r`.
+
+**3. Macros avec paramètres**
+
+Les macros peuvent accepter des arguments, ce qui les rend similaires aux fonctions inline. Elles sont particulièrement utiles pour des opérations simples où l'appel de fonction peut introduire un overhead.
+
+```c
+#define MAX(a, b) ((a) > (b) ? (a) : (b))
+
+int main() {
+    int x = 10, y = 20;
+    printf("Le maximum entre %d et %d est %d\n", x, y, MAX(x, y));
+    return 0;
+}
+```
+
+Dans cet exemple, la macro `MAX(a, b)` retourne la valeur maximale entre `a` et `b`.
+
+**4. Macros multi-lignes**
+
+Pour des macros plus complexes, vous pouvez utiliser une barre oblique inverse (`\`) pour indiquer que la macro continue sur la ligne suivante.
+
+```c
+#define PRINT_DEBUG(message) do { \
+    printf("Debug: %s\n", message); \
+} while (0)
+
+int main() {
+    PRINT_DEBUG("Ceci est un message de debug.");
+    return 0;
+}
+```
+
+La macro `PRINT_DEBUG` permet d'imprimer des messages de débogage de manière plus concise. Le bloc `do { ... } while (0)` est une astuce pour garantir que la macro se comporte correctement lorsqu'elle est utilisée dans des structures conditionnelles.
+
+**5. Précautions à prendre avec les macros**
+
+- **Éviter les effets de bord** : Comme les macros effectuent une substitution de texte, des effets de bord peuvent survenir si les arguments contiennent des expressions avec des effets secondaires.
+
+    ```c
+    int i = 1;
+    int j = 2;
+    int k = 0;
+
+    #define INCREMENT(x) ((x)++)
+    
+    k = INCREMENT(i + j); // Ceci peut produire des résultats inattendus
+    ```
+
+    Ici, `i + j` sera incrémenté deux fois, ce qui n'est probablement pas l'intention.
+
+- **Débogage** : Le débogage peut être plus difficile avec les macros car elles ne sont pas des fonctions. Leur remplacement textuel peut compliquer la compréhension du code généré.
+
+- **Utilisation de parenthèses** : Enveloppez toujours les paramètres et l'expression de remplacement dans des parenthèses pour éviter des erreurs de priorité.
+
+    ```c
+    #define SQUARE(x) ((x) * (x))
+    ```
+
+**6. Exemples de macros utiles**
+
+```c
+#define MIN(a, b) ((a) < (b) ? (a) : (b))
+#define ABS(x) ((x) < 0 ? -(x) : (x))
+#define SWAP(x, y) do { \
+    typeof(x) temp = x; \
+    x = y; \
+    y = temp; \
+} while (0)
+```
+
+- `MIN(a, b)` retourne le minimum entre `a` et `b`.
+- `ABS(x)` retourne la valeur absolue de `x`.
+- `SWAP(x, y)` échange les valeurs de `x` et `y` (utilise `typeof` pour déterminer le type des variables).
+
+Les macros `#define` sont un outil fondamental du préprocesseur C, offrant flexibilité et efficacité pour la manipulation du code. Cependant, leur utilisation doit être soigneusement pensée pour éviter les pièges courants liés à la substitution de texte.

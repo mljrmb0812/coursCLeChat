@@ -1,0 +1,81 @@
+52111FichierDEnteteEtImplementation
+
+### Partie 2 : Programmation Modulaire
+#### Section 1 : Organisation du Code
+##### Article 1 : Fichiers d'En-tête et d'Implémentation
+
+Dans le cadre de la programmation modulaire en C, l'utilisation de fichiers d'en-tête et d'implémentation est une pratique courante pour organiser le code de manière structurée et modulaire. Cette approche favorise la réutilisabilité, la lisibilité et la maintenance du code. Voici un aperçu de l'utilisation des fichiers d'en-tête (.h) et des fichiers d'implémentation (.c).
+
+**1. Fichier d'En-tête (.h)**
+
+Le fichier d'en-tête contient les déclarations des fonctions, des types de données et des macros qui sont utilisés dans d'autres parties du programme. Il fournit une interface publique pour l'utilisation des fonctionnalités implémentées dans le fichier d'implémentation correspondant. Voici un exemple de contenu typique d'un fichier d'en-tête :
+
+```c
+// fichier.h
+
+#ifndef FICHIER_H
+#define FICHIER_H
+
+// Déclarations de fonctions
+void fonction1(int arg1);
+int fonction2(double arg1, double arg2);
+
+// Déclarations de types de données
+struct MaStructure {
+    int champ1;
+    double champ2;
+};
+
+// Déclarations de macros
+#define MACRO_EXEMPLE 42
+
+#endif // FICHIER_H
+```
+
+Les directives `#ifndef`, `#define` et `#endif` sont utilisées pour éviter les inclusions multiples du fichier d'en-tête, garantissant ainsi que son contenu est inclus une seule fois.
+
+**2. Fichier d'Implémentation (.c)**
+
+Le fichier d'implémentation contient les définitions des fonctions déclarées dans le fichier d'en-tête, ainsi que toute autre logique nécessaire à leur fonctionnement. Voici un exemple de contenu typique d'un fichier d'implémentation :
+
+```c
+// fichier.c
+
+#include "fichier.h"
+
+// Définition de la fonction1
+void fonction1(int arg1) {
+    // Implémentation de la fonction
+}
+
+// Définition de la fonction2
+int fonction2(double arg1, double arg2) {
+    // Implémentation de la fonction
+    return 0;
+}
+```
+
+**3. Utilisation dans d'autres fichiers**
+
+Une fois que le fichier d'en-tête et le fichier d'implémentation sont créés, ils peuvent être utilisés dans d'autres parties du programme. Pour cela, le fichier d'implémentation doit être compilé avec les autres fichiers sources du programme. Par exemple, si vous avez un fichier `main.c` qui utilise les fonctionnalités définies dans `fichier.c`, vous pouvez les inclure comme ceci :
+
+```c
+// main.c
+
+#include "fichier.h"
+
+int main() {
+    // Utilisation des fonctions définies dans fichier.c
+    fonction1(10);
+    int resultat = fonction2(3.14, 2.71);
+    return 0;
+}
+```
+
+Lors de la compilation, vous devez inclure à la fois `main.c` et `fichier.c` pour que le programme soit correctement lié. Par exemple :
+
+```
+gcc main.c fichier.c -o mon_programme
+```
+
+En résumé, l'utilisation de fichiers d'en-tête et d'implémentation est une pratique standard en C pour organiser le code de manière modulaire et faciliter la réutilisation des fonctionnalités. Les fichiers d'en-tête définissent l'interface publique, tandis que les fichiers d'implémentation contiennent les détails de l'implémentation. Cette approche favorise la modularité, la lisibilité et la maintenance du code.

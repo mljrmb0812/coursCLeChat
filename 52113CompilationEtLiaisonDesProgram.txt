@@ -1,0 +1,42 @@
+52113CompilationEtLiaisonDesProgrammesModulaires
+
+#### Paragraphe 3 : Compilation et liaison de programmes modulaires
+
+La compilation et la liaison de programmes modulaires en C impliquent plusieurs étapes pour transformer le code source modulaire en un programme exécutable. Voici un aperçu de ces étapes :
+
+**1. Compilation des fichiers sources (.c)**
+
+Chaque fichier source (.c), ainsi que le fichier principal contenant la fonction `main()`, est compilé individuellement pour créer des fichiers objets (.o). La commande `gcc` est généralement utilisée pour cela.
+
+```
+gcc -c fichier1.c -o fichier1.o
+gcc -c fichier2.c -o fichier2.o
+gcc -c main.c -o main.o
+```
+
+**2. Liaison des fichiers objets**
+
+Une fois que tous les fichiers sources ont été compilés en fichiers objets, ils sont liés ensemble pour former un seul programme exécutable. La commande `gcc` est à nouveau utilisée pour cela, en spécifiant tous les fichiers objets à lier.
+
+```
+gcc fichier1.o fichier2.o main.o -o mon_programme
+```
+
+**3. Exécution du programme**
+
+Une fois que le programme exécutable a été créé, il peut être exécuté directement.
+
+```
+./mon_programme
+```
+
+**4. Récapitulatif du processus**
+
+- La compilation convertit chaque fichier source (.c) en fichier objet (.o), qui contient le code machine relatif à ce fichier.
+- La liaison fusionne tous les fichiers objets (.o) en un seul programme exécutable.
+- Chaque fichier source modulaire (.c) est généralement accompagné de son fichier d'en-tête (.h), qui définit les interfaces publiques pour ce module.
+- Les fichiers d'en-tête sont inclus dans les fichiers sources via des directives `#include`, tandis que les fichiers sources sont compilés individuellement.
+- Les dépendances entre les modules sont gérées par le processus de compilation et de liaison, qui s'assure que toutes les fonctions utilisées sont définies quelque part dans le programme.
+- Ce processus permet de maintenir une structure modulaire dans le code, ce qui facilite la réutilisation, la maintenance et la collaboration sur des projets de grande taille.
+
+En suivant ces étapes, les programmes modulaires en C peuvent être développés de manière efficace et organisée, ce qui facilite leur évolutivité et leur maintenance à long terme.

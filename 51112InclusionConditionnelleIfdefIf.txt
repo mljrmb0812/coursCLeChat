@@ -1,0 +1,116 @@
+51112InclusionConditionnelleIfdefIfndef
+
+### Titre V : Programmation Avancée
+#### Partie 1 : Concepts Avancés
+#### Section 1 : Préprocesseur C
+##### Article 1 : Macros et Directives
+###### Paragraphe 2 : Inclusion conditionnelle avec `#ifdef` et `#ifndef`
+
+L'inclusion conditionnelle avec `#ifdef` (if defined) et `#ifndef` (if not defined) est une technique du préprocesseur C permettant de contrôler quelles parties du code sont compilées en fonction de la définition ou non de certaines macros. Ces directives sont particulièrement utiles pour gérer les configurations de compilation, inclure des fichiers spécifiques, et éviter les problèmes de double inclusion.
+
+**1. Directive `#ifdef`**
+
+La directive `#ifdef` permet d'inclure du code uniquement si une macro donnée a été définie.
+
+```c
+#ifdef NOM_MACRO
+// Code à inclure si NOM_MACRO est défini
+#endif
+```
+
+**Exemple :**
+
+```c
+#include <stdio.h>
+
+#define DEBUG
+
+int main() {
+#ifdef DEBUG
+    printf("Mode débogage activé.\n");
+#endif
+    printf("Programme en cours d'exécution.\n");
+    return 0;
+}
+```
+
+Dans cet exemple, le message "Mode débogage activé." est imprimé uniquement si la macro `DEBUG` est définie. Si `#define DEBUG` est commentée ou supprimée, ce message ne sera pas affiché.
+
+**2. Directive `#ifndef**
+
+La directive `#ifndef` est l'opposé de `#ifdef` : elle permet d'inclure du code uniquement si une macro donnée n'a pas été définie.
+
+```c
+#ifndef NOM_MACRO
+// Code à inclure si NOM_MACRO n'est pas défini
+#endif
+```
+
+**Exemple :**
+
+```c
+#include <stdio.h>
+
+#ifndef RELEASE
+#define DEBUG
+#endif
+
+int main() {
+#ifdef DEBUG
+    printf("Mode débogage activé.\n");
+#else
+    printf("Mode production activé.\n");
+#endif
+    printf("Programme en cours d'exécution.\n");
+    return 0;
+}
+```
+
+Dans cet exemple, la macro `DEBUG` est définie seulement si `RELEASE` n'est pas définie. Si `RELEASE` est définie, le programme imprimera "Mode production activé." sinon, il imprimera "Mode débogage activé."
+
+**3. Utilisation combinée de `#ifdef` et `#ifndef`**
+
+Il est courant d'utiliser `#ifdef` et `#ifndef` ensemble pour gérer différents modes de compilation ou inclure/exclure certaines fonctionnalités.
+
+**Exemple : Gestion des inclusions multiples**
+
+Pour éviter les inclusions multiples d'un même fichier d'en-tête, on utilise généralement une combinaison de `#ifndef`, `#define`, et `#endif`.
+
+```c
+// fichier.h
+#ifndef FICHIER_H
+#define FICHIER_H
+
+// Contenu du fichier d'en-tête
+
+#endif // FICHIER_H
+```
+
+Dans cet exemple, `FICHIER_H` est utilisé comme garde d'inclusion. Si `FICHIER_H` n'est pas défini, le code entre `#ifndef FICHIER_H` et `#endif` est inclus et `FICHIER_H` est défini. Si le fichier est inclus de nouveau, `FICHIER_H` est déjà défini, donc le contenu est ignoré, évitant les doubles déclarations et les erreurs de compilation.
+
+**4. Inclusion conditionnelle avec `#if`, `#elif`, et `#else`**
+
+Pour des conditions plus complexes, `#if`, `#elif`, et `#else` peuvent être utilisés avec `#ifdef` et `#ifndef`.
+
+**Exemple :**
+
+```c
+#include <stdio.h>
+
+#define VERSION 2
+
+int main() {
+#if VERSION == 1
+    printf("Version 1\n");
+#elif VERSION == 2
+    printf("Version 2\n");
+#else
+    printf("Autre version\n");
+#endif
+    return 0;
+}
+```
+
+Dans cet exemple, le message imprimé dépend de la valeur de la macro `VERSION`.
+
+L'inclusion conditionnelle avec `#ifdef` et `#ifndef` est une méthode puissante pour contrôler la compilation conditionnelle en C. En gérant les configurations, les modes de débogage, et les inclusions multiples, ces directives permettent une flexibilité accrue dans le développement de logiciels complexes.

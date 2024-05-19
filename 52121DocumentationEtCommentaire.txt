@@ -1,0 +1,29 @@
+52121DocumentationEtCommentaire
+
+### Article 2 : Pratiques de Programmation (Cours de langage C)
+
+#### Paragraphe 1 : Documentation et commentaires
+
+Dans le contexte de l'apprentissage du langage C, la documentation et les commentaires jouent un rôle essentiel pour aider les débutants à comprendre le code et à progresser dans leur apprentissage. Voici quelques pratiques importantes concernant la documentation et les commentaires dans le cadre d'un cours de langage C :
+
+**1. Commentaires explicatifs**
+
+Encouragez les étudiants à commenter leur code de manière explicite, en fournissant des explications sur la logique de chaque fonction, sur les algorithmes utilisés, et sur les choix de conception. Les commentaires doivent être clairs et concis, en utilisant un langage simple et accessible.
+
+**2. Utilisation de commentaires en classe**
+
+Pendant les cours, prenez l'habitude de commenter le code en direct pour expliquer les concepts et les syntaxes importantes. Cela permet aux étudiants de voir comment les différents éléments du langage C sont utilisés dans des situations réelles et de comprendre leur fonctionnement.
+
+**3. Documentation des exercices et des projets**
+
+Fournissez des instructions détaillées pour chaque exercice et projet, y compris les objectifs à atteindre, les étapes à suivre, et les critères d'évaluation. Encouragez également les étudiants à documenter leur propre code en fournissant des descriptions claires des fonctions, des structures de données et des algorithmes utilisés.
+
+**4. Exemples de bonnes pratiques**
+
+Montrez aux étudiants des exemples de bonnes pratiques de documentation et de commentaires dans des projets réels en langage C. Cela peut les aider à comprendre comment documenter efficacement leur propre code et à adopter les normes de l'industrie.
+
+**5. Sensibilisation à l'importance de la documentation**
+
+Expliquez aux étudiants l'importance de la documentation dans le processus de développement logiciel, en mettant en évidence les avantages en termes de maintenance du code, de collaboration en équipe, et de compréhension du code par d'autres développeurs.
+
+En intégrant la documentation et les commentaires dans le programme d'apprentissage du langage C, les étudiants peuvent acquérir de bonnes habitudes de programmation dès le début de leur parcours, ce qui les aidera à devenir des développeurs plus compétents et à réussir dans leur carrière.

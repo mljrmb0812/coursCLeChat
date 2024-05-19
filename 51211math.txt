@@ -1,0 +1,150 @@
+51211math
+
+### Titre V : Programmation Avancée
+#### Partie 1 : Concepts Avancés
+#### Section 2 : Bibliothèques Standard
+##### Article 1 : Utilisation des Bibliothèques
+###### Paragraphe 1 : Fonctions mathématiques (`math.h`)
+
+La bibliothèque standard C comprend un ensemble de fonctions mathématiques qui sont définies dans le fichier d'en-tête `math.h`. Ces fonctions fournissent des capacités mathématiques avancées, allant des opérations de base comme les fonctions trigonométriques, logarithmiques, et exponentielles aux manipulations de nombres complexes. Voici un aperçu de certaines des fonctions les plus couramment utilisées dans `math.h`.
+
+**1. Inclusion du fichier d'en-tête `math.h`**
+
+Pour utiliser les fonctions mathématiques, vous devez inclure le fichier d'en-tête `math.h` dans votre programme :
+
+```c
+#include <math.h>
+```
+
+**2. Fonctions Trigonométriques**
+
+Les fonctions trigonométriques de base sont utilisées pour les calculs liés aux angles et aux triangles.
+
+- `double sin(double x);` : Calcule le sinus de `x` (en radians).
+- `double cos(double x);` : Calcule le cosinus de `x` (en radians).
+- `double tan(double x);` : Calcule la tangente de `x` (en radians).
+
+**Exemple :**
+
+```c
+#include <stdio.h>
+#include <math.h>
+
+int main() {
+    double angle = M_PI / 4; // 45 degrés en radians
+    printf("sin(%.2f) = %.2f\n", angle, sin(angle));
+    printf("cos(%.2f) = %.2f\n", angle, cos(angle));
+    printf("tan(%.2f) = %.2f\n", angle, tan(angle));
+    return 0;
+}
+```
+
+**3. Fonctions Exponentielles et Logarithmiques**
+
+Ces fonctions sont utilisées pour les calculs impliquant des puissances et des logarithmes.
+
+- `double exp(double x);` : Calcule l'exponentielle de `x`, soit \( e^x \).
+- `double log(double x);` : Calcule le logarithme naturel (base `e`) de `x`.
+- `double log10(double x);` : Calcule le logarithme en base 10 de `x`.
+
+**Exemple :**
+
+```c
+#include <stdio.h>
+#include <math.h>
+
+int main() {
+    double value = 10.0;
+    printf("exp(%.2f) = %.2f\n", value, exp(value));
+    printf("log(%.2f) = %.2f\n", value, log(value));
+    printf("log10(%.2f) = %.2f\n", value, log10(value));
+    return 0;
+}
+```
+
+**4. Fonctions de Puissance et Racine**
+
+Ces fonctions permettent de calculer des puissances et des racines carrées.
+
+- `double pow(double base, double exponent);` : Calcule `base` élevé à la puissance `exponent`.
+- `double sqrt(double x);` : Calcule la racine carrée de `x`.
+
+**Exemple :**
+
+```c
+#include <stdio.h>
+#include <math.h>
+
+int main() {
+    double base = 2.0, exponent = 3.0;
+    printf("%.2f^%.2f = %.2f\n", base, exponent, pow(base, exponent));
+    printf("sqrt(%.2f) = %.2f\n", base, sqrt(base));
+    return 0;
+}
+```
+
+**5. Fonctions Hyperboliques**
+
+Les fonctions hyperboliques sont similaires aux fonctions trigonométriques mais pour les hyperboles.
+
+- `double sinh(double x);` : Calcule le sinus hyperbolique de `x`.
+- `double cosh(double x);` : Calcule le cosinus hyperbolique de `x`.
+- `double tanh(double x);` : Calcule la tangente hyperbolique de `x`.
+
+**Exemple :**
+
+```c
+#include <stdio.h>
+#include <math.h>
+
+int main() {
+    double value = 1.0;
+    printf("sinh(%.2f) = %.2f\n", value, sinh(value));
+    printf("cosh(%.2f) = %.2f\n", value, cosh(value));
+    printf("tanh(%.2f) = %.2f\n", value, tanh(value));
+    return 0;
+}
+```
+
+**6. Fonctions de Manipulation des Nombres**
+
+Ces fonctions sont utiles pour manipuler des nombres, comme arrondir, obtenir la valeur absolue, etc.
+
+- `double fabs(double x);` : Calcule la valeur absolue de `x`.
+- `double ceil(double x);` : Arrondit `x` au plus proche entier supérieur.
+- `double floor(double x);` : Arrondit `x` au plus proche entier inférieur.
+
+**Exemple :**
+
+```c
+#include <stdio.h>
+#include <math.h>
+
+int main() {
+    double value = -2.7;
+    printf("fabs(%.2f) = %.2f\n", value, fabs(value));
+    printf("ceil(%.2f) = %.2f\n", value, ceil(value));
+    printf("floor(%.2f) = %.2f\n", value, floor(value));
+    return 0;
+}
+```
+
+**7. Constantes Mathématiques**
+
+La bibliothèque `math.h` définit également quelques constantes utiles, telles que `M_PI` pour la valeur de π.
+
+**Exemple :**
+
+```c
+#include <stdio.h>
+#include <math.h>
+
+int main() {
+    printf("La valeur de PI est %.5f\n", M_PI);
+    return 0;
+}
+```
+
+**Conclusion**
+
+La bibliothèque `math.h` est une partie essentielle de la bibliothèque standard C pour toute application nécessitant des calculs mathématiques. Son utilisation permet d'effectuer des opérations complexes de manière concise et efficace, rendant le code plus lisible et plus facile à maintenir.

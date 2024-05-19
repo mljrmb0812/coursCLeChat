@@ -1,0 +1,67 @@
+51213stdio
+
+La bibliothèque standard C, représentée par le fichier d'en-tête `stdio.h`, offre une panoplie de fonctions pour la gestion des entrées et des sorties dans les programmes. Que ce soit pour lire depuis le clavier (`stdin`), écrire sur l'écran (`stdout`), ou manipuler des fichiers sur le système de fichiers, `stdio.h` fournit des outils essentiels. Voici un aperçu des fonctionnalités les plus utilisées :
+
+**1. Inclusion de `stdio.h` :** 
+
+Pour utiliser les fonctionnalités d'entrées/sorties, il est nécessaire d'inclure le fichier d'en-tête `stdio.h` dans votre programme :
+
+```c
+#include <stdio.h>
+```
+
+**2. Fonctions de Lecture :**
+
+- **scanf :** Permet de lire des entrées formatées depuis le clavier.
+
+```c
+int scanf(const char *format, ...);
+```
+
+- **fgets :** Lit une ligne depuis le flux de données spécifié par `stream` (par exemple, `stdin`) et la stocke dans `str`.
+
+```c
+char *fgets(char *str, int n, FILE *stream);
+```
+
+**3. Fonctions d'Écriture :**
+
+- **printf :** Affiche des sorties formatées sur l'écran selon le format spécifié.
+
+```c
+int printf(const char *format, ...);
+```
+
+- **fputs :** Écrit la chaîne `str` dans le flux de données spécifié par `stream`.
+
+```c
+int fputs(const char *str, FILE *stream);
+```
+
+**4. Manipulation des Fichiers :**
+
+- **fopen :** Ouvre le fichier spécifié par `filename` selon le mode spécifié par `mode`.
+
+```c
+FILE *fopen(const char *filename, const char *mode);
+```
+
+- **fclose :** Ferme le flux de données associé à `stream`.
+
+```c
+int fclose(FILE *stream);
+```
+
+- **fprintf :** Écrit les sorties formatées dans le flux de données spécifié par `stream`.
+
+```c
+int fprintf(FILE *stream, const char *format, ...);
+```
+
+- **fscanf :** Lit les entrées formatées depuis le flux de données spécifié par `stream` (par exemple, un fichier) selon le format spécifié.
+
+```c
+int fscanf(FILE *stream, const char *format, ...);
+```
+
+Ces fonctions constituent la base de la gestion des entrées/sorties en C et sont indispensables pour de nombreuses applications, qu'il s'agisse de lire des données depuis un fichier, d'écrire sur la console, ou encore d'interagir avec l'utilisateur.

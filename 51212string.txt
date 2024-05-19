@@ -1,0 +1,220 @@
+51212string
+
+### Titre V : Programmation Avancée
+#### Partie 1 : Concepts Avancés
+#### Section 2 : Bibliothèques Standard
+##### Article 1 : Utilisation des Bibliothèques
+###### Paragraphe 2 : Manipulation des chaînes (`string.h`)
+
+La bibliothèque standard C inclut un fichier d'en-tête `string.h` qui fournit des fonctions pour manipuler les chaînes de caractères. Ces fonctions facilitent des opérations courantes telles que la copie, la concaténation, la comparaison, et la recherche dans les chaînes. Voici un aperçu des fonctions les plus couramment utilisées de `string.h`.
+
+**1. Inclusion du fichier d'en-tête `string.h`**
+
+Pour utiliser les fonctions de manipulation des chaînes, vous devez inclure le fichier d'en-tête `string.h` dans votre programme :
+
+```c
+#include <string.h>
+```
+
+**2. Copie de chaînes**
+
+- `char *strcpy(char *dest, const char *src);` : Copie la chaîne pointée par `src` (y compris le caractère nul de fin) dans la chaîne pointée par `dest`.
+
+**Exemple :**
+
+```c
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    char src[] = "Bonjour";
+    char dest[20];
+    strcpy(dest, src);
+    printf("Dest : %s\n", dest);
+    return 0;
+}
+```
+
+- `char *strncpy(char *dest, const char *src, size_t n);` : Copie au plus `n` caractères de la chaîne `src` dans `dest`. Si `src` est plus courte que `n`, la fin de `dest` sera remplie avec des caractères nuls.
+
+**Exemple :**
+
+```c
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    char src[] = "Bonjour";
+    char dest[20];
+    strncpy(dest, src, 5);
+    dest[5] = '\0'; // Ajouter le caractère nul de fin
+    printf("Dest : %s\n", dest);
+    return 0;
+}
+```
+
+**3. Concaténation de chaînes**
+
+- `char *strcat(char *dest, const char *src);` : Ajoute la chaîne pointée par `src` à la fin de la chaîne pointée par `dest`.
+
+**Exemple :**
+
+```c
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    char dest[20] = "Bonjour ";
+    char src[] = "le monde!";
+    strcat(dest, src);
+    printf("Dest : %s\n", dest);
+    return 0;
+}
+```
+
+- `char *strncat(char *dest, const char *src, size_t n);` : Ajoute au plus `n` caractères de la chaîne `src` à la fin de la chaîne `dest`.
+
+**Exemple :**
+
+```c
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    char dest[20] = "Bonjour ";
+    char src[] = "le monde!";
+    strncat(dest, src, 3);
+    printf("Dest : %s\n", dest);
+    return 0;
+}
+```
+
+**4. Comparaison de chaînes**
+
+- `int strcmp(const char *str1, const char *str2);` : Compare les chaînes `str1` et `str2`. Retourne un entier moins que, égal à, ou supérieur à zéro si `str1` est respectivement inférieure, égale ou supérieure à `str2`.
+
+**Exemple :**
+
+```c
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    char str1[] = "Bonjour";
+    char str2[] = "Bonjour";
+    int result = strcmp(str1, str2);
+    printf("Résultat : %d\n", result); // 0 car les chaînes sont égales
+    return 0;
+}
+```
+
+- `int strncmp(const char *str1, const char *str2, size_t n);` : Compare au plus les premiers `n` caractères des chaînes `str1` et `str2`.
+
+**Exemple :**
+
+```c
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    char str1[] = "Bonjour";
+    char str2[] = "Bon";
+    int result = strncmp(str1, str2, 3);
+    printf("Résultat : %d\n", result); // 0 car les trois premiers caractères sont égaux
+    return 0;
+}
+```
+
+**5. Longueur des chaînes**
+
+- `size_t strlen(const char *str);` : Calcule la longueur de la chaîne `str` (sans compter le caractère nul de fin).
+
+**Exemple :**
+
+```c
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    char str[] = "Bonjour";
+    size_t length = strlen(str);
+    printf("Longueur : %zu\n", length); // 7
+    return 0;
+}
+```
+
+**6. Recherche de caractères et de sous-chaînes**
+
+- `char *strchr(const char *str, int c);` : Trouve la première occurrence du caractère `c` dans la chaîne `str`.
+
+**Exemple :**
+
+```c
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    char str[] = "Bonjour";
+    char *result = strchr(str, 'o');
+    if (result) {
+        printf("Caractère trouvé à la position : %ld\n", result - str);
+    }
+    return 0;
+}
+```
+
+- `char *strstr(const char *haystack, const char *needle);` : Trouve la première occurrence de la sous-chaîne `needle` dans la chaîne `haystack`.
+
+**Exemple :**
+
+```c
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    char haystack[] = "Bonjour le monde";
+    char needle[] = "le";
+    char *result = strstr(haystack, needle);
+    if (result) {
+        printf("Sous-chaîne trouvée à la position : %ld\n", result - haystack);
+    }
+    return 0;
+}
+```
+
+**7. Fonctionnalités avancées**
+
+- `void *memset(void *str, int c, size_t n);` : Remplit les `n` premiers octets de la zone mémoire pointée par `str` avec l'octet `c`.
+
+**Exemple :**
+
+```c
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    char str[50] = "Bonjour le monde";
+    memset(str, '*', 5);
+    printf("Résultat : %s\n", str); // *****ur le monde
+    return 0;
+}
+```
+
+- `void *memcpy(void *dest, const void *src, size_t n);` : Copie `n` octets de la zone mémoire pointée par `src` vers la zone mémoire pointée par `dest`.
+
+**Exemple :**
+
+```c
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    char src[50] = "Bonjour le monde";
+    char dest[50];
+    memcpy(dest, src, strlen(src) + 1);
+    printf("Dest : %s\n", dest);
+    return 0;
+}
+```
+
+La bibliothèque `string.h` fournit une collection complète de fonctions pour la manipulation des chaînes de caractères en C, facilitant la gestion des opérations courantes et améliorant la lisibilité et la maintenance du code. Ces fonctions sont fondamentales pour la programmation en C, permettant une manipulation efficace et sécurisée des chaînes et des données en mémoire.
